@@ -2,9 +2,9 @@ Game Description
 
 The game consists of a square board with multiple levels, consisting of a grid of X*X rooms, four tower rooms in each corner. There is also a big room in the middle of (one/each) level that takes up two room squares, which represents the treasure chamber.
 
-Each room square that is visited will have a game tile that represents the layout of the room, including which walls have doors, if there are any special properties of the room (dark room, turning room, bottomless well, etc). Some cards have dots specified on them, that require the door they mark to be placed in the direction the player came from. If the dot is red a trap is sprung and the player has to draw a room trap card. If the dot is yellow the user may choose to draw another room tile and move to an adjacent square as if the turn was restarted.
+Each room square that is visited will have a game tile that represents the layout of the room, including which walls have doors, if there are any special properties of the room (dark room, turning room, bottomless well, etc). Some tiles have dots specified on them, that require the door they mark to be placed in the direction the player came from. If the dot is red a trap is sprung and the player has to draw a room trap card. If the dot is yellow the user may choose to draw another room tile and move to an adjacent square as if the turn was restarted.
 
-Each time a player visits a room with special properties, the special properties of the room will render specific actions impossible, and force the user to perform special actions before the game continues.
+Each time a player visits a room associated with special properties*, the special properties of the room will render specific actions impossible, and force the user to perform special actions before the game can continue. *Bottomless pit, turning room, dark room 
 If there are no special properties of the room, a random room card with effects is drawn that tells what happens in this room. This includes the room being empty, containing a corpse, containing chests or sarcophagi, containing monsters, etc. If the room is not empty the player has to take actions that depends on the card. If the card is a monster, the player can choose to fight, flee or wait, if the room contains something the player can choose to search that item. Unless there is a monster in the room that has not been defeated, the player can also choose to search the room for hidden items or doors.
 
 Apart from the room cards and room tiles, there are several other cards in the game. These are:
@@ -16,21 +16,18 @@ Apart from the room cards and room tiles, there are several other cards in the g
 		Goblin card x3
 		Orc card x3
 		Cave troll card x3
-		Two orcs x3
 		Skeletons x3
 	Character (hero/player) cards
 	Character battle cards
 		Three cards for each of the four characters, some of the players have special abilities on these cards.
 	Door cards
-	Door trap cards
 	Treasure cards
 	Ring cards
 	potion card
 	crossbow card
 	Chest cards
-	(TODO: Fler?)
 	
-The dragon cards consist of seven cards with a sleeping dragon and one with a wake dragon breathing fire. These cards get activated for each player during each turn that they stay in the treasure chamber. Each turn starts with the player gaining two Treasure cards with a randomized treasure on, whereafter the player draws one of the Dragon cards. If the card contains a sleeping dragon, the player is safe and stays in the treasure chamber. This card is then discarded until no player caracter is in the treasure chamber. If the Dragon card contains the woken dragon, the player throws a die to determine how much damage is taken. All players are then thrown out to an adjacent room, and all player in the treasure chamber lose their treasure cards taken during this visit to the treasure chamber.
+The dragon cards consist of seven cards with a sleeping dragon and one with a wake dragon breathing fire. These cards get activated for each player during each turn that they stay in the treasure chamber. Each turn starts with the player gaining two Treasure cards with a randomized treasure on, whereafter the player draws one of the Dragon cards. If the card contains a sleeping dragon, the player is safe and stays in the treasure chamber. This card is then discarded until no player character is in the treasure chamber. If the Dragon card contains the woken dragon, the player throws a die to determine how much damage is taken. All players are then thrown out to an adjacent room, and all player in the treasure chamber lose their treasure cards taken during this visit to the treasure chamber.
 
 Room searching cards are drawn if the player chooses to stay in the current room instead of moving and is used to search for hidden treasures or doors. If the cards contains treasure the player receives the the treasure and the turn is over, if the card is empty the turn is over, but if the card contains a hidden door, the user moves to any adjacent square, wether there is a door there or not, and continues with drawing a room card.
 
@@ -46,15 +43,16 @@ A door trap card is drawn when a door card reveals a door trap. Door traps will 
 
 Treasure cards contains a random amount of gold but can only be drawn in the treasure chamber. 
 
-Ring cards gives special abilities to the player who owns them, they may only be used once and are distributed during the setup.
+Ring cards gives special abilities to the player who owns them, they may only be used once and are distributed during the set-up.
 
 The Potion card contains a reference to a dice throw in which the potion gives different effects to the player drinking the potion. The possible outcomes range from 1 = Instant death to 12 = +4HP.
 
-Crossbow card Gives the player holding the Bowman hero four arrows to shot before a fight to try killing the monster without having to engage it. Once the arrows are used there is no way to replenish the quiver. 
+Crossbow card Gives the player holding the Bowman hero four arrows to shoot before a fight to try killing the monster without having to engage it. Once the arrows are used there is no way to replenish the quiver. 
 
-Chest cards TODO
+Chest cards may result in an attack, give the player treasure or be empty.
 
+Time line - The game is at most 27 rounds long. After each round (i.e. every player has had his/her turn), the time marker is moved one step indicating the beginning of a new day. At day 27, the game ends.
 
-* Winning / Losing conditions
-* Health-staplarna
-* Dygns-staplarna
+Health - Each player has a certain number of health points associated with his/her character, the amount of which depends on the chosen character. In a fight or by triggering a trap, the player may lose health. When the player has no more health points, he/she is dead and out of the game.
+
+Winning conditions: If at day 27, at least one player is still alive, the game ends at day 27 otherwise when the last player died. Only a living player can win the game, and only by having reached back to one of the four towers before the break of dawn. The winner of the game is the player with the highest amount of gold collected at this point.
