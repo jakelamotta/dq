@@ -63,7 +63,7 @@ Basic flow: The player, and the opponent both choose one of their three attack c
 Application:	Server
 Name: Ambush (Great spider)
 Description: The player is dealt a Room Card with an ambush by a Great Spider, and fights it.
-Primary actor: Player whose turn it is
+Primary actor: Active Player
 Precondition: None.
 Trigger: The player is dealt a Room card/room searching card that has Great Spider ambush on it.
 Basic flow: The player has to choose three number between 1 and 6. The computer randomizes a number between 1 and 6, and if the generated number matches a number given by the user, the Great Spider dies and the turn is over.
