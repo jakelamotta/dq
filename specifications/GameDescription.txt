@@ -1,0 +1,7 @@
+Spelbeskrivning
+
+Spelets utseende
+
+Spelet består av ett spelbräde med flera våningar, bestående av ett rutnät på YxY rum och fyra tornrum, ett i varje hörn. Dessutom finns det ett stort rum i mitten på (varje, en?) våning 
+
+Spelets gång
