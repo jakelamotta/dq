@@ -26,7 +26,7 @@ Description:	The player chooses a Hero, depending on his turn of action.
 Primary Actor:	Multiple players
 Precondition:	At least 2 players in an active game.
 Trigger:	The game is begun
-Basic flow: The users roll a die each. The action turns of the players is decided by the outcome of the dice (highest die-first to act=first action turn). The players then choose a Hero from the available sets of heroes in the order of their actions (when a Hero is chosen by a player, that hero is no longer available to other players). When the heroes are chosen, then players choose a magic ring among the available magic rings in the reverse action turn order.
+Basic flow: The users roll a die each. The action turns of the players is decided by the outcome of the dice (highest die-first to act=first action turn). The players then choose a Hero from the available sets of heroes in the order of their actions (when a Hero is chosen by a player, that hero is no longer available to other players). When the heroes have been chosen, then players choose a magic ring among the available magic rings in the reverse action turn order.
 Alternate Flows:	#a Several players roll the same die, in this case, those players may roll their die again in order to break the tie. The other players are not affected, and their action turn relative to these players is based on the first roll of the die. (i.e., A rolls 4. B rolls 1. and C rolls 1. C and B roll again, resulting in 6 and 5. The order is now A, C, B and not C, B, A).
 
 #3
@@ -62,17 +62,35 @@ Basic flow: The player, and the opponent both choose one of their three attack c
 #6
 Application:	Server
 Name: Ambush (Great spider)
+Description: The player is dealt a Room Card with an ambush by a Great Spider, and fights it.
+Primary actor: Player whose turn it is
+Precondition: None.
+Trigger: The player is dealt a Room card/room searching card that has Great Spider ambush on it.
+Basic flow: The player has to choose three number between 1 and 6. The computer randomizes a number between 1 and 6, and if the generated number matches a number given by the user, the Great Spider dies and the turn is over.
+Alternate flow: If the generated number does not match one of the user given numbers the user is dealt 1 (one) damage point and the spider remains on the users hand until next turn, at which point the use case is restarted.
 
 #7
 Application: Server
 Name: Occupying the dragon's lair
-
-Basic flow: dragon sleeps
-Alternative flow: dragon wakes
+Description: The player is in the dragons lair and tries to steal gold from the sleeping dragon.
+Primary actor: Player whose turn it is
+Precondition: None
+Trigger: The user enters, or remains in the dragons lair (treasure chamber).
+Basic flow: The user is dealt a random amounts of gold, and the computer decides if the dragon wakes up or not. If the dragon is not woken, the turn is over.
+Alternative flow: If the dragon wakes, all Players in the treasure chamber are evicted into a random adjacent and previously visited room and loose all gold they have gained since entering the treasure chamber. All players are also dealt a random value between 1-12 in damage. The turn is then over.
 
 #8
 Application: Server
 Name: Search room
+Description: 
+Primary actor: Active player
+Precondition: Active player have searched the room 0 or 1 time before. Room rules allowes
+the room to be searched
+Trigger: The active player chooses to search the room and draw a room searching card 
+Basic flow: The player draws a room searching card and finds nothing. The turn is over and
+number of searches is incremented
+Alternative flow: The player draws a card with a hidden door and may or may not go through it. The hidden dor may be "placed" in any direction and disappears after the turn. If the player doesnt go through the door the turn is over.
+Alternative flow: A giant spider is drawn, see use case number 6. 
 
 #9
 Application: Server
@@ -86,6 +104,14 @@ Name: Open door
 Application: Server
 Name: Player dies
 
+#12
+Application: Server
+Name: Player wins
+Description:
+Primary actor:
+Preconditions: Player is alive in a tower room and has the most gold or is the only
+surviver
+Trigger: End of game (27 turns)
+Basic flow: Turn marker is moved to final position, determine winner.
 
-
-server - await 3-4 players
+Server - await 3-4 players
