@@ -1,0 +1,91 @@
+Use Case Number	ID to represent your use case
+Application	What system or application does this pertain to
+Use Case Name	The name of your use case, keep it short and sweet
+Use Case Description	Elaborate more on the name, in paragraph form.
+Primary Actor	Who is the main actor that this use case represents
+Precondition	What preconditions must be met before this use case can start
+Trigger	What event triggers this use case
+Basic Flow	The basic flow should be the events of the use case when everything is perfect; there are no errors, no exceptions. This is the "happy day scenario". The exceptions will be handled in the "Alternate Flows" section.
+Alternate Flows	The most significant alternatives and exceptions
+
+#1
+Application	Client
+Name	Game connection
+Description	The user has launched the game, and will choose between a set of available options (e.g. connect, settings, statistics, exit)
+Primary Actor	Player
+Precondition	None
+Trigger	Running the game executable, or quitting a current game which is interpreted as a reinitialization comparable to restarting the executable.
+Basic Flow	The player presses a connection button, upon which he/she is requested to specify the IP-number of an active game (server) to connect to. 
+Alternate Flows	#a The user changes his/her mind and presses the exit button. The user is then asked to verify that he/she really want to end the game before the game is ended.
+#b ev. future settings options
+
+#2 
+Application:	Server
+Name:	Choosing the hero and magic ring
+Description:	The player chooses a Hero, depending on his turn of action.
+Primary Actor:	Multiple players
+Precondition:	At least 2 players in an active game.
+Trigger:	The game is begun
+Basic flow: The users roll a die each. The action turns of the players is decided by the outcome of the dice (highest die-first to act=first action turn). The players then choose a Hero from the available sets of heroes in the order of their actions (when a Hero is chosen by a player, that hero is no longer available to other players). When the heroes are chosen, then players choose a magic ring among the available magic rings in the reverse action turn order.
+Alternate Flows:	#a Several players roll the same die, in this case, those players may roll their die again in order to break the tie. The other players are not affected, and their action turn relative to these players is based on the first roll of the die. (i.e., A rolls 4. B rolls 1. and C rolls 1. C and B roll again, resulting in 6 and 5. The order is now A, C, B and not C, B, A).
+
+#3
+Application:	Server
+Name:	Make a move
+Description:	The player chooses an adjacent, legal, square to move to.
+Primary Actor:	Player
+Precondition:	The player's turn. The rules allow the player to move.
+Trigger:	The player chooses to move from his/her current square.
+Basic flow:	The player moves to a selected square. A random tile is placed on the square provided that there is no tile in that square. The player is dealt a room card, the effect of which differs. See use case #4 TODO TODO
+Alternate Flows: a# If a new room tile is placed and that room tile contains a trap, the player is dealt a trap card instead of a room card. See use case TODO. After the trap is sprung, the player is dealt a room card as above.
+
+#4
+Application:	Server
+Name: Ambush (goblin, orc, cave troll, skeleton or two orcs)
+Description: The player is ambushed, and must fight or flee.
+Primary Actor: Two players
+Precondition: None
+Trigger: The player is dealt #a a room card specifying an ambush, #b draws a coffin card specifying an ambush
+Basic flow: The player must choose whether he/she wants to fight, flee or wait. The opponent will then randomly fight or flee. In the case where the opponent flees, the turn is over. In case the opponent fights, the result depends on the action of the player. If the player flees: there is a chance that he/she succeeds, and is then moved to the previous tile unharmed. If this does not succeed, the player takes damage and must fight, see use case #5. If the player chooses to fight or wait, and the opponent also chooses to fight, see use case #5.
+Alternative flow: The player has a magic ring allowing him or her to flee the scene without consequence.
+
+#5
+Application: Server
+Name: Fight (goblin, orc, cave troll, skeleton or two orcs)
+Description: The player fights an opponent, represented by another player in the game (or AI).
+Primary actor: Player whose turn it is
+Secondary actor: Player with previous turn.
+Precondition: None
+Trigger: A fight is initiated according to #4.
+Basic flow: The player, and the opponent both choose one of their three attack cards. When both have chosen, these are compared and the winner is determined. The looser takes one damage (the opponent can potentially take two damage). In case of a tie, both player and opponent take one damage. This repeats, until either the opponent or the player is dead.
+
+#6
+Application:	Server
+Name: Ambush (Great spider)
+
+#7
+Application: Server
+Name: Occupying the dragon's lair
+
+Basic flow: dragon sleeps
+Alternative flow: dragon wakes
+
+#8
+Application: Server
+Name: Search room
+
+#9
+Application: Server
+Name: Search coffin/fallen warrior (skriv båda gemensamt, två olika basic flows)
+
+#10
+Application: Server
+Name: Open door
+
+#11
+Application: Server
+Name: Player dies
+
+
+
+server - await 3-4 players
