@@ -1,0 +1,282 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{fullpage}
+\usepackage[british]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc} 
+%\usepackage{amsthm} \newtheorem{theorem}{Theorem}
+\usepackage{color}
+\usepackage{float}
+
+
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+%\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+
+\usepackage{alltt}
+\usepackage{listings}
+ \usepackage{aeguill} 
+\usepackage{dsfont}
+%\usepackage{algorithm}
+%\usepackage{algorithmicx}
+\usepackage{subfig}
+\lstset{% parameters for all code listings
+	language=Python,
+	frame=single,
+	basicstyle=\small,  % nothing smaller than \footnotesize, please
+	tabsize=2,
+	numbers=left,
+%	framexleftmargin=2em,  % extend frame to include line numbers
+	%xrightmargin=2em,  % extra space to fit 79 characters
+	breaklines=true,
+	breakatwhitespace=true,
+	prebreak={/},
+	captionpos=b,
+	columns=fullflexible,
+	escapeinside={\#*}{\^^M}
+}
+
+
+% Alter some LaTeX defaults for better treatment of figures:
+    % See p.105 of "TeX Unbound" for suggested values.
+    % See pp. 199-200 of Lamport's "LaTeX" book for details.
+    %   General parameters, for ALL pages:
+    \renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+    \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+    %   Parameters for TEXT pages (not float pages):
+    \setcounter{topnumber}{2}
+    \setcounter{bottomnumber}{2}
+    \setcounter{totalnumber}{4}     % 2 may work better
+    \setcounter{dbltopnumber}{2}    % for 2-column pages
+    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+	% remember to use [htp] or [htpb] for placement
+
+
+\usepackage{fancyvrb}
+%\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+%\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+
+\usepackage{url}
+\urldef{\mailsa}\path|sharyari@gmail.com |    
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+
+\usepackage{tikz} \usetikzlibrary{trees}
+\usepackage{hyperref}  % should always be the last package
+
+% useful colours (use sparingly!):
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+\newcommand{\red}[1]{{\color{red}#1}}
+
+% useful wrappers for algorithmic/Python notation:
+\newcommand{\length}[1]{\text{len}(#1)}
+\newcommand{\twodots}{\mathinner{\ldotp\ldotp}}  % taken from clrscode3e.sty
+\newcommand{\Oh}[1]{\mathcal{O}\left(#1\right)}
+
+% useful (wrappers for) math symbols:
+\newcommand{\Cardinality}[1]{\left\lvert#1\right\rvert}
+%\newcommand{\Cardinality}[1]{\##1}
+\newcommand{\Ceiling}[1]{\left\lceil#1\right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\Iff}{\Leftrightarrow}
+\newcommand{\Implies}{\Rightarrow}
+\newcommand{\Intersect}{\cap}
+\newcommand{\Sequence}[1]{\left[#1\right]}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+\newcommand{\SetComp}[2]{\Set{#1\SuchThat#2}}
+\newcommand{\SuchThat}{\mid}
+\newcommand{\Tuple}[1]{\langle#1\rangle}
+\newcommand{\Union}{\cup}
+\usetikzlibrary{positioning,shapes,shadows,arrows}
+
+% SRS commands
+\newcommand{\requirement}[1]{\subsubsection{#1}\begin{tabular}{l p{12.2cm}}}
+
+\newcommand{\reqsection}[1]{\\ \textbf{#1} &}
+
+\newcommand{\stoprequirement}{\end{tabular}}
+
+
+\pagestyle{empty}
+
+\title{\textbf{DragonQuest - Use Cases}}
+
+\author{Jonathan Sharyari \and Sven Lundgren \and Kristian Johansson \and Bj{\"o}rn Forsberg}
+
+\begin{document}
+\maketitle
+This will be the largest and most important section of the SRS. The customer requirements will be embodied within Section 2, but this section will give the D-requirements that are used to guide the project's software design, implementation, and testing.
+
+Each requirement in this section should be:
+Correct
+Traceable (both forward and backward to prior/future artifacts)
+Unambiguous
+Verifiable (i.e., testable)
+Prioritized (with respect to importance and/or stability)
+Complete
+Consistent
+Uniquely identifiable (usually via numbering like 3.4.5.6)
+
+Attention should be paid to the carefuly organize the requirements presented in this section so that they may easily accessed and understood.  Furthermore, this SRS is not the software design document, therefore one should avoid the tendency to over-constrain (and therefore design) the software project within this SRS.
+
+\section{External Interface Requirements}
+\subsection{User Interfaces}
+
+\requirement{Chat}
+\reqsection{Description}
+Interface requirement: There should be a chat window with two fields, one for input and one to display recent messages. Both fields should have support for all languages based on the latin and cyrillic alphabet, that are needed to communicate in those languages.
+
+\reqsection{Inputs}
+Inputs can be keyboard, mouse and touchpad.
+
+\reqsection{Processing}
+Pressing the text field with the mouse or the touchpad should change the focus to the text field, in order to allow text input from the keyboard. From this point on, the user can type text, which will be submitted when the user presses the enter key. 
+
+\reqsection{Output}
+The chat display field displays the 5 latest lines of text. 
+
+\reqsection{Error handling}
+If input character doesn't exist that fact should not affect the rest of the provided characters. If data is lost between clients it should be re-sent.
+\stoprequirement
+
+\subsection{Hardware Interfaces}
+\subsection{Software Interfaces}
+\subsection{Communications Interfaces}
+\section{Functional Requirements}
+This section describes specific features of the software project.  If desired, some requirements may be specified in the use-case format and listed in the Use Cases Section.
+
+\subsection{Game settings}
+
+\requirement{Multiplayer/Single Player Mode}
+\reqsection{Description}
+The user should be able to choose to play the game in multiplayer format, or single player format.
+
+\reqsection{Inputs}
+The user should either provide an IP-address, as a dot-separated number or a hostname to connect to or alternatively, the user should be able to create a new game.
+
+\reqsection{Processing}
+The client will try to establish a connection to an external server on the host with the supplied IP-address. 
+If this does succeed, the user will enter the existing game.
+
+If the supplied IP-address is localhost, and no server is running on the same computer as the client, a new game will be started. When a new game is started, the user should be able to decide game parameters, most importantly the number of allowed external players and the number of players in total.
+
+Note that the number of total players may be higher than the number of external players, i.e., the remaining players are controlled by the server AI. Creating a single player game then corresponds to the act of not allowing any external players.
+
+\reqsection{Side-effect}
+A game starts.
+
+\reqsection{Error handling}
+If game connection does not succeed, an error message is shown to the user describing the reason for the failure. The most common reasons of failure should be recognized, this includes hostname not being found, game not being found, game full and game has already started. 
+
+\stoprequirement
+
+\subsection{Something}
+
+\requirement{Recover from connection loss}
+\reqsection{Description}
+The client should be able to reconnect to the game server without losing the game state.
+
+\reqsection{Inputs}
+N/A
+
+\reqsection{Processing}
+If the client reconnects within the servers specified turn time the game continues. If the client is unable to reconnect the players turn is forfeit and the player loses 1 HP.  
+
+\reqsection{Error handling}
+If the client is not able to reconnect a descriptive error message is displayed.
+
+\stoprequirement
+
+\section{Non-Functional Requirements}
+Non-functional requirements may exist for the following attributes.  Often these requirements must be achieved at a system-wide level rather than at a unit level.  State the requirements in the following sections in measurable terms (e.g., 95% of transaction shall be processed in less than a second, system downtime may not exceed 1 minute per day, > 30 day MTBF value, etc). 
+\subsection{Performance}
+
+\subsection{Game experience}
+\subsubsection{Competition}
+The game should allow for statistics and other means of comparison between players. The game should include a set of achievements that the player can unlock.
+
+\subsubsection{Game community}
+The should exist a community within the game to keep the players as engaged as possible. This includes the abilities to keep track on other players (friends), the ability to change the game environment (on the client side) to the largest extent possible, and the ability to create and share user generated content within the community.
+
+\subsubsection{Medievalness}
+The game should have provide a medieval experience, including music, graphics and language.
+
+\subsubsection{Board game correlation}
+The game should deviate as little as possible from the standard board game, unless otherwise specified in this document.
+
+\subsection{Reliability}
+\subsubsection{Responsiveness}
+The game should stall as little as possible in order to improve the game experience. The game should also minimize stalls caused by users.
+
+\subsubsection{Stability}
+The game shall not respond unexpectedly to erronous user input.
+
+\subsection{Availability}
+\subsubsection{Learning curve}
+It should be possible to learn the game adequately within 20 minutes of game play. No tutorial should be needed.
+
+\subsubsection{Gameplay development}
+The game should include elements of gameplay that allow the user to develop as a player. Also, the characters in game should evolve in some extent based on in-game experiences, in order to keep the game as versatile as possible.
+
+\subsection{Security}
+\subsubsection{Validation}
+\label{cheating}
+The server should validate the client input to make sure they are legal according to the game rules. The client needs to validate server data user input. 
+\subsection{Maintainability}
+\subsubsection{Maintenance}
+The code should be easy to maintain and extend.
+
+\subsubsection{Reusability}
+The code base of the project should be as little intertwined as possible with the specific game rules of DungeonQuest. This should allow for code reuse, when developing other board games in the future.
+
+\subsection{Portability}
+\subsubsection{Mobile devices}
+The game should support the most common mobile devices, such as the Windows mobile, iOS and Android platforms. It shall be possible to create a lower resolution client, in order to support any phone that fulfills the minimum requirements stated in \ref{hwreq}.
+
+\subsubsection{Multi-platform}
+The game should be written in Java, in order to function on any platform supporting the java virtual machine. As iOS currently does not support the machine, a objective-C version of the \emph{client} should be made available. An iOS compatible version of the server will not be prioritized before the initial game release.
+
+
+\section{Inverse Requirements}
+State any *useful* inverse requirements.
+
+\section{Design Constraints}
+Specify design constrains imposed by other standards, company policies, hardware limitation, etc. that will impact this software project.
+
+\subsection{Process}
+\subsubsection{Iterative development process}
+The game development should follow an iterative design process. Each iteration shall be two weeks long, and a snapshot of the development shall be handed in for review to the customer at the end of each iteration.
+
+\subsubsection{Deadlines}
+The game must be ready for deployement by christmas 2013, to exploit the christmas rush.
+
+\subsection{Product}
+\subsubsection{Low hardware requirements}
+\label{hwreq}
+The hardware requirements of the game should be kept as low as possible. The game should run on any computer with at least 20mb RAM and 300mhz processor and a graphics card with 3d accelleration. (We're just making this up. It would be possible to have this kind of constraint but we don't know what numbers are reasonable).
+
+\subsubsection{Data transfer}
+The game should rely on low amounts of data transfer, minimizing both the cost for the users to play the game, and the demands on connectivity. This is essential for mobile device support.
+
+\subsubsection{Multi-client}
+The game should have a server-client architecture. It should be possible for users to design 3rd party clients, but not 3rd party servers for the game. The server should ensure that all clients follow the game rules, also see \ref{cheating}.
+
+\section{Other Requirements}
+Catchall section for any additional requirements.
+
+
+\end{document}
+
