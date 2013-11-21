@@ -245,9 +245,13 @@ Each turn in the battle goes as follows:
 
 Both players choose a combat and place them infront of themselves. The cards are displayed when both players have selected their cards. If one or both cards are a power card, see Use case \ref{fight_powercard}.
 
+If the player plays a card of a damage type that currently exists in the combat stack, and the played card has a higher attack value, then the player performs a death blow, see use case \ref{deathblow}.
+
 If the attack value of a player's Combat card is equal to or lower than the opponents attack value and his card has a counterattack icon matching the opponents attack type, the player may make a counterattack, see use case \ref{fight_counterattack}.
 
-The player with the highest total attack value wins the round (possibly due to the effects of a counterattack). The loser has to put all the winners attack cards into their damage stack, and put their own cards in the combat stack.
+If both a death blow and a counterattack are possible on the same turn, first the death blow will occure, then the counterattack (if the loser survived the death blow).
+
+The player with the highest total attack value wins the round (possibly due to the effects of a counterattack). The loser takes as much damage as the number of cards the winner used in the attack, and put their own cards in the combat stack. Both players draw new battle cards, to replenish those used in that round.
 
 If the winner played a combat card of a type that is currently in the combat stack, additional damage is dealt according to \ref{fight_deathblow}.
 
@@ -255,7 +259,7 @@ If both players have the same attack value and no counterattacks are possible, n
 
 This is repeated, until either the opponent or the player has received damage higher than or equal to the available HP. In this case, the fight ends and game continues.
 
-If the opponent was the winner, the player is out of the gamem and the monster continues to occupy the room, without taking any damage. If the player was the winner, the monster is dead and the player will take damage equal to the number of cards in the damage stack.
+If the opponent was the winner, the player is out of the game and the monster continues to occupy the room, without taking any damage. If the player was the winner, the monster is dead.
 
 & NO \\
 
