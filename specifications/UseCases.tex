@@ -170,24 +170,6 @@ Alternate Flows & Several players roll the same die, in this case, those players
 
 
 \begin{table}
-\caption{Make a regular move}
-\label{move}
-\begin{tabular}{|c| p{9cm}|c}
-\hline
-Application & Server & \\
-Name & Make a move & \\
-Description & The player chooses an adjacent, legal, square to move to. & \\
-Primary Actor & Player & \\
-Precondition & The player's turn. The rules allow the player to move. & \\
-Trigger & The player chooses to move from his/her current square. & \\ \hline
-Basic flow & The player moves to a selected square. A random tile is placed on the square provided that there is no tile in that square. The player is dealt a room card, the effect of which differs. See use case \ref{ambushopponent} TODO TODO & YES \\ \hline
-Alternate Flow & If a new room tile is placed and that room tile contains a trap, the player is dealt a trap card instead of a room card. See use case TODO.  & NO \\\hline
-\hline
-\end{tabular}
-\end{table}
-
-
-\begin{table}
 \caption{Ambush by an opponent}
 \label{ambushopponent}
 \begin{tabular}{|c| p{9cm}|c}
@@ -245,7 +227,7 @@ Each turn in the battle goes as follows:
 
 Both players choose a combat and place them infront of themselves. The cards are displayed when both players have selected their cards. If one or both cards are a power card, see Use case \ref{fight_powercard}.
 
-If the player plays a card of a damage type that currently exists in the combat stack, and the played card has a higher attack value, then the player performs a death blow, see use case \ref{deathblow}.
+If the player plays a card of a damage type that currently exists in the combat stack, and the played card has a higher attack value, then the player performs a death blow, see use case \ref{fight_deathblow}.
 
 If the attack value of a player's Combat card is equal to or lower than the opponents attack value and his card has a counterattack icon matching the opponents attack type, the player may make a counterattack, see use case \ref{fight_counterattack}.
 
@@ -320,7 +302,6 @@ Secondary actor & Player with previous turn. & \\
 Precondition & None & \\
 Trigger & A fight is initiated according to \ref{ambushopponent}. & \\ \hline
 Basic flow & The player, and the opponent both choose one of their three attack cards. When both have chosen, these are compared and the winner is determined. The looser takes one damage (the opponent can potentially take two damage). In case of a tie, both player and opponent take one damage. This repeats, until either the opponent or the player is dead. & NO\\ \hline
-alternative flow & Crossbow TODO & YES\\
 \hline
 \end{tabular}
 \end{table}
@@ -391,19 +372,108 @@ Alternative flow & A treasure is found, player receives random amount of treasur
 \end{tabular}
 \end{table}
 
-Application : Server
-Name: Search coffin or fallen warrior (skriv bada gemensamt, tva olika basic flows)
+\begin{table}
+\caption{Move to adjacent room}
+\label{moveoutfromroom}
+\begin{tabular}{|c| p{9cm}|c}
+\hline
+Application & Server & \\
+Name & Move to adjacent room & \\
+Description & The player moves to an adjacent room in the dungeon & \\
+Primary actor & Active player & \\
+Precondition & The room has an adjacent room, possibly through a door or portcullis. Alternatively, a hidden door might have been found according to use case \ref{searchroom}. This may not happen if the player does not have the possibility to move, due to some other effect (possibly due to the type of room). & \\
+Trigger & The player is active and chooses to move to an adjacent room  & \\ \hline
+Basic flow & There is one or more rooms adjacent to the tile the player currently occupies. In this case, the player can choose to move to any such tile, the effects of which is described in \ref{moveintoroom} & \\ \hline
+Alternative flow & The player attempts to leave the room through a door. See use case \ref{opendoor}. & NO \\\hline
+Alternative flow & The player attempts to leave the room through a portcullis. See use case \ref{portcullis}. & YES \\ \hline
+Alternative flow & The player has found a hidden door as explained in \ref{searchroom}. The player can move to any of the six tiles to the left, right, front, back, up and down as long as that square is still within the game board. The effects of this is explained in \ref{moveintoroom} & YES \\ \hline
+Alternative flow & A treasure is found, player receives random amount of treasure. & YES \\
+\hline
+\end{tabular}
+\end{table}
 
-Application: Server
-Name: Open door
+\begin{table}
+\caption{opendoor}
+\label{opendoor}
+\begin{tabular}{|c| p{9cm}|c}
+\hline
+Application & Server & \\
+Name & Open door & \\
+Description & The player attempts to open a door & \\
+Primary actor & Active player & \\
+Precondition & There is at least one door in the current room. \ref{searchroom} & \\
+Trigger & Player interaction.  & \\ \hline
+Basic flow & The player is dealt a door card. If the door card states that the door is opened, the player moves to the tile adjacent to the door, the effects of which is described in use case \ref{moveintoroom}.
 
-Application: Server
-Name: Player dies
+If the door card states that the door is jammed, the player must stay in the room but can attempt to repeat the process the next turn if he/she wishes.
+
+If the door card states that the door is trapped, the player is a trap card and must the stay in the room for the round. The player can attempt to repeat the process the next turn if he/she wishes. For the effects of the trap card, see \ref{trap}. & \\ \hline
+ \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Portcullis}
+\label{portcullis}
+\begin{tabular}{|c| p{9cm}|c}
+\hline
+Application & Server & \\
+Name & Open portcullis & \\
+Description & The player attempts to move through an entrance blocked by a portcullis & \\
+Primary actor & Active player & \\
+Precondition & There is a portcullis blocking a path. \ref{searchroom} & \\
+Trigger & Player interaction. & \\ \hline
+Basic flow & The player must make an attribute test based on his/her strength, see use case \ref{attributetest}. If the player succeeds, he/she may move to the room adjacent to the portcullis and face the effects as explained in \ref{moveintoroom}. If the player fails, he/she suffers 1d6 damage (Or what was it exactly? Doesn't matter really...) and must stay in the room until the next round, when he/she is allowed to attempt again or take another action if he/she wishes. & \\ \hline
+ \\
+\hline
+\end{tabular}
+\end{table}
 
 
-Server - await 3-4 players
+\begin{table}
+\caption{Attribute test}
+\label{attributetest}
+\begin{tabular}{|c| p{9cm}|c}
+\hline
+Application & Server & \\
+Name & Attribute test & \\
+Description & The player has attempted an action that requires an attribute test to determine if it is successful or not. & \\
+Primary actor & Active player & \\
+Precondition & None & \\
+Trigger & An action requires an attribute test to be made. & \\ \hline
+Basic flow & The player does an attribute test against one of the hero's stats: strength, agility, armor or luck, depending on the attempted action. The player must roll 2d6 and compare the value towards the hero's stat. If the sum of the values of the two dice is lower than the players stat, the player succeeds with the action. If not, the player has failed and must suffer the consequences according to the rules of the specific action. & \\ \hline
+ \\
+\hline
+\end{tabular}
+\end{table}
 
+\begin{table}
+\caption{Move into room}
+\label{moveintoroom}
+\begin{tabular}{|c| p{9cm}|c}
+\hline
+Application & Server & \\
+Name & Move into room & \\
+Description & The player has successfully moved into a new room. & \\
+Primary actor & Active player & \\
+Precondition & See \ref{moveoutfromroom}. Also, the room must not be occupied by another player, except for in the treasure chamber. & \\
+Trigger & - & \\ \hline
+Basic flow & If the room has been previously visited by another player, the characteristics of the room will be the same as before. If a trap was sprung in the previous visit, it will be deactivated and no longer affect the player. If the room has not been visited before, a new tile is chosen randomly from the available tiles (excluding treasure chamber). The new tile must be oriented in such a way that a passage, door or portcullis is leading to the room the player has left. This also applies when the player moved through a hidden door.
 
+If the room contains a trap, the player must first receive a trap card as explained in use case \ref{trap}. If the room contains an opponent from a previous opponent, the player must first fight that opponent. Note that in such a case, the player may need to fight opponents twice in the same round.
+
+The player will be dealt a room card (possibly after facing an opponent or a trap). See \ref{roomcard}.
+
+If the room contains a coffin or sarcophagus, the player may \emph{choose} to open the sarcophagus, see use case \ref{chests}. If the room contains a corpse or fallen warrior, the player may \emph{choose} to search the corpse/warrior, see use case \ref{corpse}.
+
+& \\ \hline
+alternative flow &
+TODO: SPECIAL ROOMS.
+ \\
+\hline
+\end{tabular}
+\end{table}
 
 \end{document}
 
