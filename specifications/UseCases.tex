@@ -305,14 +305,7 @@ Basic flow & The player, and the opponent both choose one of their three attack 
 \hline
 \end{tabular}
 \end{table}
-
-
-
-
-
-
-
-
+0
 
 
 
@@ -361,7 +354,7 @@ Application & Server & \\
 Name & Search room & \\
 Description &  & \\
 Primary actor & Active player & \\
-Precondition & Active player have searched the room 0 or 1 time before. Room rules allows the room to be searched  & \\
+Precondition & Active player have searched the room 0 or 1 time before. Room rules allows the room to be searched. Also, the room must have a search icon showing that it can be searched.  & \\
 Trigger & The active player chooses to search the room and draw a room searching card  & \\ \hline
 Basic flow & The player draws a room searching card and finds nothing. The turn is over and number of searches is incremented. & \\ \hline
 Alternative flow & The player draws a card with a hidden door and may or may not go through it. The hidden door may be "placed" in any direction and disappears after the turn. If the player does not go through the door the turn is over. & NO \\\hline
@@ -461,16 +454,31 @@ Precondition & See \ref{moveoutfromroom}. Also, the room must not be occupied by
 Trigger & - & \\ \hline
 Basic flow & If the room has been previously visited by another player, the characteristics of the room will be the same as before. If a trap was sprung in the previous visit, it will be deactivated and no longer affect the player. If the room has not been visited before, a new tile is chosen randomly from the available tiles (excluding treasure chamber). The new tile must be oriented in such a way that a passage, door or portcullis is leading to the room the player has left. This also applies when the player moved through a hidden door.
 
-If the room contains a trap, the player must first receive a trap card as explained in use case \ref{trap}. If the room contains an opponent from a previous opponent, the player must first fight that opponent. Note that in such a case, the player may need to fight opponents twice in the same round.
+If the room contains an opponent from a previous opponent, the player must first fight that opponent.
 
-The player will be dealt a room card (possibly after facing an opponent or a trap). See \ref{roomcard}.
+The player will then possibly be dealt a room card, depending on which type of room it is, or suffer other types of consequences, see table \ref{roomeffects}.
 
 If the room contains a coffin or sarcophagus, the player may \emph{choose} to open the sarcophagus, see use case \ref{chests}. If the room contains a corpse or fallen warrior, the player may \emph{choose} to search the corpse/warrior, see use case \ref{corpse}.
 
 & \\ \hline
-alternative flow &
-TODO: SPECIAL ROOMS.
- \\
+\end{tabular}
+\end{table}
+
+
+\begin{table}
+\caption{Effects of different rooms}
+\label{roomeffects}
+\begin{tabular}{|c| p{9cm} |}
+\hline
+Dungeon Room & Draw a room card \\\hline
+Trap room & Draw a trap card \\\hline
+Treasure room & see use case \ref{dragonslair} \\\hline
+Bottomless pit & Test attribute luck, according to \ref{attributetest}. If a success, the player makes it across the pit, and takes the next turn as normal. If a failure, the player have fallen into the pit and is killed! \\\hline
+Corridor room & The player must immediately move again. The player cannot enter the same Corridor twice during the same turn.\\\hline
+Chasm & Not yet considered \\ \hline
+Chamber of Darkness & The player must immediately move again. A die is rolled, if the result is 1 or 2, the player goes left. If 3,4, the player goes back to the room he came from, and 5,6 leads to the right. If the passage rolled is blocked by a wall, the turn ends and the player must roll again next turn.\\\hline
+Tower Room & If you have one or more Loot cards, you may exit the dungeon. If you cannot or choose not to exit the dungeon, you must immediately move again \\
+
 \hline
 \end{tabular}
 \end{table}
