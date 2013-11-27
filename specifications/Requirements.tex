@@ -109,6 +109,8 @@
 
 \newcommand{\stoprequirement}{\end{tabular}}
 
+\newcommand{\prio}[1]{\texttt{Priority:} #1}
+
 
 \pagestyle{empty}
 
@@ -208,51 +210,78 @@ Non-functional requirements may exist for the following attributes.  Often these
 \subsubsection{Competition}
 The game contains elements that allow for competativeness between players.
 
+\prio{3}
+
 \subsubsection{Game community}
 The should exist a community within the game to keep the players as engaged as possible. This includes the abilities to keep track on other players (friends), the ability to change the game environment (on the client side) to the largest extent possible, and the ability to create and share user generated content within the community.
+
+\prio{4}
 
 \subsubsection{Medievalness}
 The game should have provide a medieval experience, including music, graphics and language.
 
+\prio{3}
+
 \subsubsection{Board game correlation}
 The game should deviate as little as possible from the standard board game, unless otherwise specified in this document.
+
+\prio{2}
 
 \subsection{Reliability}
 \subsubsection{Responsiveness}
 The game should stall as little as possible in order to improve the game experience. The game should also minimize stalls caused by users.
 
+\prio{1}
+
 \subsubsection{Stability}
 The game shall not respond unexpectedly to erronous user input.
+
+\prio{1}
 
 \subsection{Availability}
 \subsubsection{Learning curve}
 It should be possible to learn the game adequately within 20 minutes of game play. No tutorial should be needed.
 
+\prio{3}
+
 \subsubsection{Gameplay development}
 The game should include elements of gameplay that allow the user to develop as a player. Also, the characters in game should evolve in some extent based on in-game experiences, in order to keep the game as versatile as possible.
+
+\prio{3}
 
 \subsection{Security}
 \subsubsection{Validation}
 \label{cheating}
 The server should validate the client input to make sure they are legal according to the game rules. The client needs to validate server data user input. 
 
+\prio{1}
+
 \subsubsection{Privacy}
 Any collected informations should be handled in accordance with Personuppgiftslagen (PUL), the swedish personal data law.
+
+\prio{1}
 
 \subsection{Maintainability}
 \subsubsection{Maintenance}
 The code should be easy to maintain and extend.
 
+\prio{1}
+
 \subsubsection{Reusability}
 The code base of the project should be as little intertwined as possible with the specific game rules of DungeonQuest. This should allow for code reuse, when developing other board games in the future.
+
+\prio{1}
 
 \subsection{Portability}
 \subsubsection{Mobile devices}
 The game should support the most common mobile devices, such as the Windows mobile, iOS and Android platforms. It shall be possible to create a lower resolution client, in order to support any phone that fulfills the minimum requirements stated in \ref{hwreq}.
 
+\prio{2}
+
 \subsubsection{Multi-platform}
 The game should be written in Java, in order to function on any platform supporting the java virtual machine. As iOS currently does not support the machine, a objective-C version of the \emph{client} should be made available. An iOS compatible version of the server will not be prioritized before the initial game release.
 
+\prio{2}
 
 \section{Inverse Requirements}
 State any *useful* inverse requirements.
