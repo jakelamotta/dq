@@ -185,6 +185,91 @@ If game connection does not succeed, an error message is shown to the user descr
 
 \stoprequirement
 
+\subsection{Game board actions}
+
+\requirement{Move}
+
+\reqsection{Description}
+The user can move its hero to another room or into a tower.
+
+\reqsection{Inputs}
+The user should provide a move command to the server, depending on how the client is designed how this is done might vary.
+
+\reqsection{Processing}
+Except for validation (validation is also done on the server side) the client doesn't do any processing of the input. The input is passed to the server where its dealt with, a move will in normal cases be to any adjacent room (or up or down a staircase) that is allowed. In certain rooms the user has the option to move two or potentially more steps as well but these rules are set by the specific room.
+
+\reqsection{Output}
+The hero in question has been moved to the square the move aimed for.
+
+\reqsection{Error Handling}
+Any non-valid user inputs are dealt with by the client and a message that the move is invalid is displayed for the user.
+Invalid data can still reach the server if the data is altered on the way. Therefore the server also validates the data to make sure the move is allowed according to the game state and rules.
+If the client loses its connection to the server the user will get made aware that the command wasn't executed and that the action should be tried again.
+
+\stoprequirement
+
+\requirement{Search room}
+
+\reqsection{Description}
+The user can search a room for items such as chests, hidden doors, treasures etc.
+ 
+\reqsection{Inputs}
+The user gives the search room command via the client.
+ 
+\reqsection{Processing}
+The room search can start at any point given that it's the player's turn and it stands in a searchable room (not all rooms are).
+
+When the search commences the player draws a room search card which will reveal what the player found and further action will take place accordingly.
+
+After the card action is done the player's turn is over.
+ 
+\reqsection{Side-effect}
+The card drawn will determine the outcome of the search. See requirements for the specific actions.
+ 
+\reqsection{Error Handling}
+Any non-valid user inputs are dealt with by the client and a message that the move is invalid is displayed for the user.
+ 
+Invalid data can still reach the server if the data is altered on the way. Therefore the server also validates the data to make sure the move is allowed according to the game state and rules.
+ 
+If the client loses its connection to the server the user will get made aware that the command wasn't executed and that the action should be tried again.
+\stoprequirement
+
+\subsection{Battling}
+
+\requirement{Battle}
+
+\reqsection{Description}
+A player can battle an opponent, controlled either by another player or the AI.
+
+\reqsection{Inputs}
+The player and opponent both choose a card from their respective battle hands. The player uses a mouse or touchpad to do so.
+
+\reqsection{Processing}
+The winner of the battle is determined by comparing the two cards. The participant with the highest total attack value wins the round, and the opponent loses one as many hit points as the number of cards the winner of the round played. There is a possibility of deathblow and counter attack, according to their respective requirements.
+
+\reqsection{Output}
+The player and opponent are visually informed of the outcome of the battle round.
+
+\stoprequirement
+
+\requirement{Ambush}
+
+\reqsection{Description}
+A player can be the victim of an ambush by an opponent when entering a new room.
+
+\reqsection{Inputs}
+The player may choose whether to fight the opponent or flee from the battle. The choice is made using a mouse or touchpad.
+
+\reqsection{Processing}
+If the player chooses to fight, a battle between the player and opponent commences. If the player chooses to flee, the player and opponent compares their respective power cards. If the player's power card has a higher attack value, the player successfully flees. Otherwise, the player takes damage ??? and a battle between the player and opponent commences.
+
+\reqsection{Output}
+If the player chooses to flee, the player is informed visually of the outcome.
+
+\reqsection{Error handling}
+If a player disconnects and does not re-establish connection within the specified round time, AI will take over until the player returns.
+\stoprequirement
+
 \subsection{Something}
 
 \requirement{Recover from connection loss}
@@ -196,9 +281,6 @@ N/A
 
 \reqsection{Processing}
 If the client reconnects within the servers specified turn time the game continues. If the client is unable to reconnect the players turn is forfeit and the player loses 1 HP.  
-
-\reqsection{Error handling}
-If the client is not able to reconnect a descriptive error message is displayed.
 
 \stoprequirement
 
