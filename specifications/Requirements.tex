@@ -198,6 +198,9 @@ The user should provide a move command to the server, depending on how the clien
 \reqsection{Processing}
 Except for validation (validation is also done on the server side) the client doesn't do any processing of the input. The input is passed to the server where its dealt with, a move will in normal cases be to any adjacent room (or up or down a staircase) that is allowed. In certain rooms the user has the option to move two or potentially more steps as well but these rules are set by the specific room.
 
+\reqsection{Side-effects}
+The players turn is over.
+
 \reqsection{Output}
 The hero in question has been moved to the square the move aimed for.
 
@@ -220,11 +223,10 @@ The user gives the search room command via the client.
 The room search can start at any point given that it's the player's turn and it stands in a searchable room (not all rooms are).
 
 When the search commences the player draws a room search card which will reveal what the player found and further action will take place accordingly.
-
-After the card action is done the player's turn is over.
  
 \reqsection{Side-effect}
 The card drawn will determine the outcome of the search. See requirements for the specific actions.
+The players turn is over.
  
 \reqsection{Error Handling}
 Any non-valid user inputs are dealt with by the client and a message that the move is invalid is displayed for the user.
@@ -267,12 +269,14 @@ If the player chooses to fight, a battle between the player and opponent commenc
 If the player chooses to flee, the player is informed visually of the outcome.
 
 \reqsection{Error handling}
-If a player disconnects and does not re-establish connection within the specified round time, AI will take over until the player returns.
+See Requirement \ref{req:connectionlossstall}.
+
 \stoprequirement
 
 \subsection{Something}
 
-\requirement{Recover from connection loss}
+\requirement{Connection loss/stall}
+\label{req:connectionlossstall}
 \reqsection{Description}
 The client should be able to reconnect to the game server without losing the game state.
 
@@ -280,7 +284,11 @@ The client should be able to reconnect to the game server without losing the gam
 N/A
 
 \reqsection{Processing}
-If the client reconnects within the servers specified turn time the game continues. If the client is unable to reconnect the players turn is forfeit and the player loses 1 HP.  
+If the client reconnects within the servers specified turn time the game continues. If the client is unable to reconnect one of the following happens:
+\begin{itemize} 
+	\item If player not in battle: The players turn is forfeit and the player loses 1 HP.  
+	\item If player in battle: AI takes over until the player returns.
+\end{itemize}
 
 \stoprequirement
 
