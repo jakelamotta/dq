@@ -236,6 +236,20 @@ Invalid data can still reach the server if the data is altered on the way. There
 If the client loses its connection to the server the user will get made aware that the command wasn't executed and that the action should be tried again.
 \stoprequirement
 
+\requirement{Occupying the dragon's lair}
+
+\reqsection{Description} A player currently residing in the dragon's lair can decide to stay there for another turn in risk of awakening the dragon and in return taking damage from it. 
+
+\reqsection{Inputs} The user chooses to wait when occupying the dragon's lair.
+
+\reqsection{Processing} When the user issues the "stay" command a dragon card is drawn and this will either show that the dragon stay asleep in which case no further action is taken. But the result can also be that the dragon is awaken in which case the hero will receive a random amount of damage and also kicked out of the lair to an adjacent tile.
+
+\reqsection{Output} Either nothing (dragon stays asleep) or damage suffered and movement of the player's hero.
+
+\reqsection{Error handling} If the player loses connection and cant reconnect in time an AI will take over and play the turn for him/her. 
+
+\stoprequirement
+
 \subsection{Battling}
 
 \requirement{Battle}
@@ -273,7 +287,35 @@ See Requirement \ref{req:connectionlossstall}.
 
 \stoprequirement
 
-\subsection{Something}
+\requirement{Death blow}
+
+\reqsection{Description} A player will do a death blow to an opponent thus doing extra damage to the opponent during that combat turn if the played attack card is matching any card in the combat stack and the value of the card is higher than that of the opponent.
+
+\reqsection{Inputs} The attack card played by the player in question
+
+\reqsection{Processing} The type of the attack card played is compared to the type of the cards in the combat stack. If the the type matches and the value of the player's card is higher the player may take all cards of that type from the combat stack and put it into the opponents damage stack. The battle turn is than resolved as usual.
+
+\reqsection{Output} The output is the changed amount of damage the opponent takes as a result of the successful death blow
+
+\reqsection{Error handling} If a player disconnects and does not re-establish connection within the specified round time, AI will take over until the player returns.
+
+\stoprequirement
+
+\requirement{Counter Attack}
+
+\reqsection{Description} A player may counter attack after the initial battle cards have been played.
+
+\reqsection{Inputs} Provided that the player has a counter attack card that matches the type of the opponents chosen attack a counter attack can be made by providing one or more CA cards. 
+
+\reqsection{Processing} The CA cards that are added to combat stack will increase the total attack value of the player in question. After these cards have been played the battle round continues as usual.
+
+\reqsection{Output} The attack value of the counter attacking player will be increased accordingly.
+
+\reqsection{Error handling} If a player disconnects and does not re-establish connection within the specified round time, AI will take over until the player returns.
+
+\stoprequirement
+
+\subsection{Connections}
 
 \requirement{Connection loss/stall}
 \label{req:connectionlossstall}
