@@ -1,4 +1,4 @@
-package input;
+package communication;
 
 public interface ClientInterface {
 

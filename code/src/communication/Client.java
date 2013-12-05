@@ -1,4 +1,4 @@
-package input;
+package communication;
 
 public class Client implements ClientInterface {
 

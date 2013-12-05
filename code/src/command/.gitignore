@@ -1,0 +1,13 @@
+/ACommand.class
+/AInterpreterCommand.class
+/AMapCommand.class
+/APlayerCommand.class
+/ChooseHeroCommand.class
+/MoveCommand.class
+/GameStateHandler.class
+/Game.class
+/ACommunicationCommand.class
+/Main.class
+/NullCommand.class
+/NewPlayerCommand.class
+/NewClientCommand.class

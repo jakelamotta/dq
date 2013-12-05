@@ -1,13 +1,17 @@
 package command;
 
+import map.Directions;
 import map.Map;
 
 public class MoveCommand extends AMapCommand {
-	int direction;
+	private Directions direction;
+	
+	public MoveCommand(Directions dir){
+		direction = dir;
+	}
 	
 	public ACommand execute(Map m) {
-		//Map.action().....
-		return null;
+		return m.move(direction);
 	}
 	
 	public String toString() {

@@ -7,8 +7,5 @@ public abstract class ACommand {
 		return null;
 	}
 	
-	public String toString() {
-		return "Abstract Command: ";
-	}
 	
 }

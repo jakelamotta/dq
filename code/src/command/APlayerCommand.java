@@ -1,10 +1,11 @@
 package command;
 
-import Player.Player;
+import player.Player;
+import player.PlayerHandler;
 
 public abstract class APlayerCommand extends ACommand {
 
 	
-	public abstract ACommand execute(Player p);
+	public abstract ACommand execute(PlayerHandler p);
 
 }
