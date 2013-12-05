@@ -1,18 +1,17 @@
 package communication;
 
-import java.util.ArrayList;
-
 import command.ACommand;
 import command.GameStateHandler;
 import command.NewPlayerCommand;
 
 
 public class Communications {
-	private ClientInterface[] _cl = new ClientInterface[GameStateHandler.MAXPLAYERS];
+	private ClientInterface[] _cl;
 	private int counter = 0;
 	
 	public Communications(){
-		}
+            _cl = new ClientInterface[GameStateHandler.MAXPLAYERS];
+        }
 	
 	public ACommand addNewClient(ClientInterface i){
 		_cl[counter] = i;

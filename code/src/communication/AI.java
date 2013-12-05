@@ -1,7 +1,8 @@
 package communication;
 
 public class AI implements ClientInterface {
-	public AI(int seed) {
+	
+        public AI(int seed) {
 		
 	}
 	

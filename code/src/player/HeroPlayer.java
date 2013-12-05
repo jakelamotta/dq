@@ -1,6 +1,7 @@
 package player;
 
 import command.ACommand;
+import command.NullCommand;
 
 public class HeroPlayer extends Player {
 
@@ -11,7 +12,7 @@ public class HeroPlayer extends Player {
 	}
 	
 	public ACommand action(ACommand pc) {
-		return null;
+		return new NullCommand();
 	}
 	
 	public void setHero(Hero h) {

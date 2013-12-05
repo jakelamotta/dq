@@ -9,7 +9,7 @@ public class ChooseHeroCommand extends ACommunicationCommand {
 	}
 	
 	public ACommand execute(Communications p) {
-		return null;
+		return new NullCommand();
 	}
 
 }

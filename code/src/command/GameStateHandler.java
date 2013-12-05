@@ -1,6 +1,5 @@
 package command;
 
-import java.util.Queue;
 import java.util.Stack;
 
 import communication.Communications;
@@ -10,18 +9,22 @@ import map.Map;
 
 
 public class GameStateHandler {
-	private Map _m;
-	private PlayerHandler _p = new PlayerHandler();
-	private Communications _i = new Communications();
-	private Stack<ACommand> _commandStack = new Stack<ACommand>();
-	private Boolean _victoryCondition;
 	public static final int MAXPLAYERS = 10;
-	int counter = 0;
+	private final Map _m;
+	private final PlayerHandler _p;
+	private final Communications _i;
+	private final Stack<ACommand> _commandStack;
+	private boolean _victoryCondition;
+	private int counter = 0;
 	
 	GameStateHandler() {
 		//Set basic test values and add one player and one move to make
 		_m = new Map(0,0,0);
+                _p = new PlayerHandler();
+                _i = new Communications();
 		_victoryCondition = false;
+                _commandStack = new Stack<>();
+                
 		_commandStack.push(new MoveCommand(Directions.NORTH));
 		_commandStack.push(_i.addNewClient(null));
 		_commandStack.push(_i.addNewClient(null));
@@ -31,7 +34,7 @@ public class GameStateHandler {
 	 * PlayGame()
 	 * Pre: All players have a hero.
 	 */
-	public void PlayGame() {
+	protected void PlayGame() {
 		
 		while(true) {
 			if(_victoryCondition)

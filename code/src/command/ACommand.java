@@ -4,7 +4,7 @@ public abstract class ACommand {
 	public int sentBy; // Debug?
 	
 	public ACommand execute() {
-		return null;
+            return new NullCommand();
 	}
 	
 	
