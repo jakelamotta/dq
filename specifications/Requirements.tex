@@ -109,7 +109,7 @@
 
 \newcommand{\stoprequirement}{\end{tabular}}
 
-\newcommand{\prio}[1]{\texttt{Priority:} #1}
+\newcommand{\prio}[2]{\texttt{Priority:} #1 \emph{Motivation:} #2}
 
 
 \pagestyle{empty}
@@ -120,19 +120,8 @@
 
 \begin{document}
 \maketitle
-This will be the largest and most important section of the SRS. The customer requirements will be embodied within Section 2, but this section will give the D-requirements that are used to guide the project's software design, implementation, and testing.
 
-Each requirement in this section should be:
-Correct
-Traceable (both forward and backward to prior/future artifacts)
-Unambiguous
-Verifiable (i.e., testable)
-Prioritized (with respect to importance and/or stability)
-Complete
-Consistent
-Uniquely identifiable (usually via numbering like 3.4.5.6)
-
-Attention should be paid to the carefuly organize the requirements presented in this section so that they may easily accessed and understood.  Furthermore, this SRS is not the software design document, therefore one should avoid the tendency to over-constrain (and therefore design) the software project within this SRS.
+This document contains the requirements for the DragonQuest game. All requirements have a priority associated with them, ranging from $1$ to $5$, where $1$ is the highest and $5$ is the lowest. This implies that if some functionality is inconsistent or for some other reason is not realizable, the priorities reflect which requirements have precedence to be implemented in the software.
 
 \section{External Interface Requirements}
 \subsection{User Interfaces}
@@ -152,6 +141,10 @@ The chat display field displays the 5 latest lines of text.
 
 \reqsection{Error handling}
 If input character doesn't exist that fact should not affect the rest of the provided characters. If data is lost between clients it should be re-sent.
+
+\reqsection{Priority}
+5
+
 \stoprequirement
 
 \subsection{Hardware Interfaces}
@@ -183,6 +176,9 @@ A game starts.
 \reqsection{Error handling}
 If game connection does not succeed, an error message is shown to the user describing the reason for the failure. The most common reasons of failure should be recognized, this includes hostname not being found, game not being found, game full and game has already started. 
 
+\reqsection{Priority}
+1 \emph{Motivation:} Business value, architecturally important, critical for game functionality
+
 \stoprequirement
 
 \subsection{Game board actions}
@@ -209,6 +205,9 @@ Any non-valid user inputs are dealt with by the client and a message that the mo
 Invalid data can still reach the server if the data is altered on the way. Therefore the server also validates the data to make sure the move is allowed according to the game state and rules.
 If the client loses its connection to the server the user will get made aware that the command wasn't executed and that the action should be tried again.
 
+\reqsection{Priority}
+1 \emph{Motivation:} Critical for the game's functionality
+
 \stoprequirement
 
 \requirement{Search room}
@@ -234,6 +233,10 @@ Any non-valid user inputs are dealt with by the client and a message that the mo
 Invalid data can still reach the server if the data is altered on the way. Therefore the server also validates the data to make sure the move is allowed according to the game state and rules.
  
 If the client loses its connection to the server the user will get made aware that the command wasn't executed and that the action should be tried again.
+
+\reqsection{Priority}
+3 \emph{Motivation:} Important for game experience
+
 \stoprequirement
 
 \requirement{Occupying the dragon's lair}
@@ -247,6 +250,9 @@ If the client loses its connection to the server the user will get made aware th
 \reqsection{Output} Either nothing (dragon stays asleep) or damage suffered and movement of the player's hero.
 
 \reqsection{Error handling} If the player loses connection and cant reconnect in time an AI will take over and play the turn for him/her. 
+
+\reqsection{Priority}
+2 \emph{Motivation:} The main goal of the game from the player's perspective
 
 \stoprequirement
 
@@ -265,6 +271,9 @@ The winner of the battle is determined by comparing the two cards. The participa
 
 \reqsection{Output}
 The player and opponent are visually informed of the outcome of the battle round.
+
+\reqsection{Priority}
+1 \emph{Motivation:} Important for game experience, architecturally important
 
 \stoprequirement
 
@@ -285,6 +294,9 @@ If the player chooses to flee, the player is informed visually of the outcome.
 \reqsection{Error handling}
 See Requirement \ref{req:connectionlossstall}.
 
+\reqsection{Priority}
+3 \emph{Motivation:} Important for board game correlation, \ref{req:boardgamecorrelation}
+
 \stoprequirement
 
 \requirement{Death blow}
@@ -299,6 +311,9 @@ See Requirement \ref{req:connectionlossstall}.
 
 \reqsection{Error handling} If a player disconnects and does not re-establish connection within the specified round time, AI will take over until the player returns.
 
+\reqsection{Priority}
+5 \emph{Motivation:} Not critical for game experience.
+
 \stoprequirement
 
 \requirement{Counter Attack}
@@ -312,6 +327,10 @@ See Requirement \ref{req:connectionlossstall}.
 \reqsection{Output} The attack value of the counter attacking player will be increased accordingly.
 
 \reqsection{Error handling} If a player disconnects and does not re-establish connection within the specified round time, AI will take over until the player returns.
+
+\reqsection{Priority}
+4 \emph{Motivation:} Adds a competitive factor to the game, see \ref{req:competition}
+
 
 \stoprequirement
 
@@ -332,91 +351,95 @@ If the client reconnects within the servers specified turn time the game continu
 	\item If player in battle: AI takes over until the player returns.
 \end{itemize}
 
+\reqsection{Priority}
+1 \emph{Motivation:} Critical for playability and business.
+
+
 \stoprequirement
 
 \section{Non-Functional Requirements}
-Non-functional requirements may exist for the following attributes.  Often these requirements must be achieved at a system-wide level rather than at a unit level.  State the requirements in the following sections in measurable terms (e.g., 95% of transaction shall be processed in less than a second, system downtime may not exceed 1 minute per day, > 30 day MTBF value, etc). 
+Non-functional requirements may exist for the following attributes.  Often these requirements must be achieved at a system-wide level rather than at a unit level.  State the requirements in the following sections in measurable terms (e.g., 95\% of transaction shall be processed in less than a second, system downtime may not exceed 1 minute per day, > 30 day MTBF value, etc). 
 \subsection{Performance}
 
 \subsection{Game experience}
 \subsubsection{Competition}
+\label{req:competition}
 The game contains elements that allow for competativeness between players.
 
-\prio{3}
+\prio{3}{Replay value, which adds business value.}
 
 \subsubsection{Game community}
 The should exist a community within the game to keep the players as engaged as possible. This includes the abilities to keep track on other players (friends), the ability to change the game environment (on the client side) to the largest extent possible, and the ability to create and share user generated content within the community.
 
-\prio{4}
+\prio{3}{Community creates business opportunities around the game.}
 
 \subsubsection{Medievalness}
 The game should have provide a medieval experience, including music, graphics and language.
 
-\prio{3}
+\prio{3}{Users expect this from a game with a medieval setting [quotation needed].}
 
 \subsubsection{Board game correlation}
+\label{req:boardgamecorrelation}
 The game should deviate as little as possible from the standard board game, unless otherwise specified in this document.
 
-\prio{2}
+\prio{2}{Business value, as selling the game as a computer game copy of the board game eases marketing.}
 
 \subsection{Reliability}
 \subsubsection{Responsiveness}
 The game should stall as little as possible in order to improve the game experience. The game should also minimize stalls caused by users.
 
-\prio{1}
+\prio{1}{Critical to keep users playing.}
 
 \subsubsection{Stability}
 The game shall not respond unexpectedly to erronous user input.
 
-\prio{1}
+\prio{1}{Critical for game playability.}
 
 \subsection{Availability}
 \subsubsection{Learning curve}
 It should be possible to learn the game adequately within 20 minutes of game play. No tutorial should be needed.
 
-\prio{3}
+\prio{3}{A shallow learning curve eases recruitment of new players.}
 
 \subsubsection{Gameplay development}
 The game should include elements of gameplay that allow the user to develop as a player. Also, the characters in game should evolve in some extent based on in-game experiences, in order to keep the game as versatile as possible.
 
-\prio{3}
+\prio{3}{Increases probability of players keep playing, which gives market opportunities}
 
 \subsection{Security}
 \subsubsection{Validation}
 \label{cheating}
 The server should validate the client input to make sure they are legal according to the game rules. The client needs to validate server data user input. 
 
-\prio{1}
+\prio{1}{Multiplayer cheating is a common cause of player loss [citation needed]}
 
 \subsubsection{Privacy}
 Any collected informations should be handled in accordance with Personuppgiftslagen (PUL), the swedish personal data law.
 
-\prio{1}
+\prio{1}{This is required in order to follow Swedish law.}
 
 \subsection{Maintainability}
 \subsubsection{Maintenance}
 The code should be easy to maintain and extend.
 
-\prio{1}
+\prio{1}{The game is expected to be used for a long time after the initial release. It is essential to keep maintenance low.}
+
 
 \subsubsection{Reusability}
 The code base of the project should be as little intertwined as possible with the specific game rules of DungeonQuest. This should allow for code reuse, when developing other board games in the future.
 
-\prio{1}
+\prio{1}{Code re-usability is important, as we expect to develop a multitude of DragonQuest-based games in the future.}
 
 \subsection{Portability}
 \subsubsection{Mobile devices}
 The game should support the most common mobile devices, such as the Windows mobile, iOS and Android platforms. It shall be possible to create a lower resolution client, in order to support any phone that fulfills the minimum requirements stated in \ref{hwreq}.
 
-\prio{2}
+\prio{2}{The mobile operating systems are still young, and it is likely that some of these operating systems will be obsolete in the near future.}
 
 \subsubsection{Multi-platform}
 The game should be written in Java, in order to function on any platform supporting the java virtual machine. As iOS currently does not support the machine, a objective-C version of the \emph{client} should be made available. An iOS compatible version of the server will not be prioritized before the initial game release.
 
-\prio{2}
-
-\section{Inverse Requirements}
-State any *useful* inverse requirements.
+\prio{2}{Important to make the game available to as many players as possible, increasing the revenue.}
 
 \section{Design Constraints}
 Specify design constrains imposed by other standards, company policies, hardware limitation, etc. that will impact this software project.
@@ -425,22 +448,33 @@ Specify design constrains imposed by other standards, company policies, hardware
 \subsubsection{Iterative development process}
 The game development should follow an iterative design process. Each iteration shall be two weeks long, and a snapshot of the development shall be handed in for review to the customer at the end of each iteration.
 
+\prio{1}{Iterative development processes are shown to produce significantly better results.}
+
+
 \subsubsection{Deadlines}
-The game must be ready for deployement by christmas 2013, to exploit the christmas rush.
+The game must be ready for deployement by christmas 2013.
+
+\prio{2}{Important for business, exploit christmas sales.}
+
 
 \subsection{Product}
 \subsubsection{Low hardware requirements}
 \label{hwreq}
 The hardware requirements of the game should be kept as low as possible. The game should run on any computer with at least 20mb RAM and 300mhz processor and a graphics card with 3d accelleration. (We're just making this up. It would be possible to have this kind of constraint but we don't know what numbers are reasonable).
 
+\prio{2}{Important to make the game available to as many players as possible, increasing the revenue.}
+
+
 \subsubsection{Data transfer}
-The game should rely on low amounts of data transfer, minimizing both the cost for the users to play the game, and the demands on connectivity. This is essential for mobile device support.
+The game should rely on low amounts of data transfer.
+
+\prio{2}{Avoids bandwidth restrictions, allowing the game to be played with less stable internet connection.}
+
 
 \subsubsection{Multi-client}
 The game should have a server-client architecture. It should be possible for users to design 3rd party clients, but not 3rd party servers for the game. The server should ensure that all clients follow the game rules, also see \ref{cheating}.
 
-\section{Other Requirements}
-Catchall section for any additional requirements.
+\prio{3}{This is expected to strengthen the community surrounding the game.}
 
 
 \end{document}
