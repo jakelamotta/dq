@@ -181,6 +181,28 @@ If game connection does not succeed, an error message is shown to the user descr
 
 \stoprequirement
 
+\requirement{Observing game}
+
+\reqsection{Description}
+A user not involved in an ongoing game can choose to observe any game via its client. 
+
+\reqsection{Inputs}
+The user provides to it’s client the IP-address of the server hosting the game he/she want’s to observe.
+
+\reqsection{Processing}
+An attempt will be made to set up the connection and if successful the user will join the game and current game state will be loaded to the client.
+
+\reqsection{Output}
+The game state is loaded and the client presents the information to the user according to its implementation.
+
+\reqsection{Error handling}
+If the connection is not successfull the user will be presented with information that so was the case and why it didnt work. After the user will have the option to retry the connection attempt. 
+
+\reqsection{Priority}
+3 \emph{Motivation:} Additional feature that allows non-players to watch games, which tightens the community around the game.
+
+\stoprequirement
+
 \subsection{Game board actions}
 
 \requirement{Move}
