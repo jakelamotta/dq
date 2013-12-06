@@ -8,7 +8,7 @@ public class ChooseHeroCommand extends ACommunicationCommand {
 		sentBy = sentby;
 	}
 	
-	public ACommand execute(Communications p) {
+	public ACommand execute() {
 		return new NullCommand();
 	}
 

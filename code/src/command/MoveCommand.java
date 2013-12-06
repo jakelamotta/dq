@@ -10,13 +10,8 @@ public class MoveCommand extends AMapCommand {
 		direction = dir;
 	}
 	
-	public ACommand execute(Map m) {
-		return m.move(direction);
+	public ACommand execute() {
+		return GameStateHandler.m.move(direction);
 	}
 
-	@Override
-	public ACommand execute() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

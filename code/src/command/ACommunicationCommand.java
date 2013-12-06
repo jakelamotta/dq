@@ -4,6 +4,6 @@ import communication.Communications;
 
 public abstract class ACommunicationCommand extends ACommand {
 
-	public abstract ACommand execute(Communications i);
+	public abstract ACommand execute();
 	
 }
