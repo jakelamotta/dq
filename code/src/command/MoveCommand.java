@@ -13,4 +13,10 @@ public class MoveCommand extends AMapCommand {
 	public ACommand execute(Map m) {
 		return m.move(direction);
 	}
+
+	@Override
+	public ACommand execute() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
