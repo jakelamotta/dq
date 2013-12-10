@@ -1,1 +1,62 @@
-TOM FIL
+% DICTIONARY
+% ----------
+% The project: Övergripande om hela projektet, inkl. brädspel, kod, diagram, etc.
+% The game: Abstrakt om spelets funktionalitet i systemet, samt konkret om brädspelet.
+% The system: Konkret om vår modellering av spelet.
+
+\section{Introduction}
+
+The goal of this project is to design and implement a computer game adaptation of the \emph{DragonQuest} board game. A subgoal of the project is making the game architecture losely coupled with the actual game, to allow the reuse of the architecture and its components to implement other similar games. 
+
+\subsection{The DragonQuest board game}
+
+The \emph{DragonQuest} game is a turn-based board game for one or more players. The main goal of the game is to enter an old castle and finding the way to the treasure chamber, rumored to be full of unclaimed treasure. The castle consists of a number of rooms which are guarded by monsters and traps, and the treasure chamber itself is guarded by a sleeping dragon.
+
+The players have to find their way through the castle, collect as much treasure as possible, and not get killed by monsters before the end of the day, as no human can survive the night in the castle.
+
+The rooms are connected through doors, both regular and hidden, limiting the possible moves through the castle, thereby forcing the player to always keep the time needed for escaping the castle in mind, while working their way into the inner castle in search of treasure.
+
+All actions by the players result in different reactions from the game, represented by drawing different cards. These cards are divided into different stacks depending on their functionality. There is, for example, a Room Search Card stack deciding the outcome of a room search, and a Door Card stack for deciding if a locked door is opened or remains closed.
+
+The game is over when the day has passed, and the player that has managed to collect the largest treasure and escape the castle alive is pronounced the winner.
+
+\subsection{The computer game adaption}
+
+The computer game adaption is built around a set of modules with independent functionality needed to play the game, these include a module for representing the game board, and a module for performing battles. The game rules are implemented using an object representing the cards in the board game. This implementation allows for simple changes to the game rules, should we want to change them in future updates, while it keeps the game structure closely linked to that of the board game, ensuring that the game behaves in a way similar to the board game, as this is one of the non-functional requirements for the game. Section \ref{sec:architecture} contains a more in-depth presentation of the internal structure of the computer game.
+
+\subsection{Artifacts}
+
+The design process produces a number of artifacts used to describe the system under design. A more comprehensive documentation of these artifacts follow later in this report, but they are presented in short here to give the reader an overview of the concepts used and how they relate to each other. The major artifacts of the project are:
+
+\begin{itemize}
+\item Analysis artifacts
+  \begin{itemize}
+    \item Software Requirement Specification
+    \item Use Cases
+    \item Domain Model
+  \end{itemize}
+\item Design artifacts
+  \begin{itemize}
+  \item Class diagrams
+  \item System architecture diagram
+  \item Dynamic diagrams
+  \end{itemize}
+\end{itemize}
+
+The \emph{Software Requirement Specification (SRS)} contains all the requirements, both \emph{functional} and \emph{non-functional}. These requirements dictate what the system shall do, and how it shall do it. The SRS is presented in Section \ref{sec:srs}.
+
+The \emph{Use Cases} are produced during the analysis of the board game to express the functionality of the system from different users viewpoint. The use cases are presented in Section \ref{sec:usecases}.
+
+Both the SRS and the Use case artifacts are a great help both in the design of the system, and to verify that the system actually performs as specified, as it outlines the inner functionality of the system, and the interactions with different users respectively. With the help of these two artifacts a \emph{Domain Model} can be produced, describing the objects that make up the game and their relations. This document in turn is used to get a graspable overview of the game the system will module and will be a great reference when designing the actual system. The Domain Model is presented and discussed in more detail in Section \ref{sec:domainmodel}.
+
+The produced analysis artifacts are, as previously pointed out, used as the foundation to construct the design artifacts. The Domain Model can be used to construct the first basic \emph{Class Diagram}, as the concepts and relations described by the domain model must be implemented by the system anyway. The iterative process of deciding which concepts from the domain model should be turned into classes, which should be represented otherwise, and how to implement their relations produces a implementable class diagram from the domain model. A more thourough presentation of the class diagram for this system is available in Section \ref{sec:classdiagram}.
+
+As the design of the system gets more and more clear from the Class Diagram, it is possible to start dividing the functionality into clearly divided subsystems or modules. At this point another level of abstraction can be introduced, by creating a \emph{System Architecture Diagram}, only describing the subsystems and their interactions. If the designer is more experienced the system architecture diagram could be designed before the class diagram, to ensure that the system conforms to a pre-defined divison of focus areas, but in this project the class diagram was iteratively improved until an architecture emerges. Further information about the System Architecture Diagram can be found in Section \ref{sec:architecture}.
+
+The \emph{Dynamic diagrams} are a way of presenting the interactions done in the system to fulfill a predefined requirement or use-case, to demonstrate how a specific problem has been solved. These diagrams can also be used to verify that the system is actually able to perform the intended actions, without breaking important object oriented design concepts as low coupling and information hiding. The dynamic diagrams produced during this project are presented in Section \ref{sec:dynamicdiagrams}.
+
+\subsection{Methodology}
+
+The game design is done in an iterative fashion, working on multiple parts of the design at once, refining them as the project continues. This approach grants the designer the possibility to convert the domain model part by part to a class diagram, focusing on areas given the highest priority first, using Design Patterns on a well defined scope of the system. Once the first version of the class diagram is finished, the class diagram can be iteratively improved by using concepts such as Anti-Patterns and the GRASP method to identify weaknesses and adjust the design to overcome them.
+
+The iterative approach also grants us the possibility to start coding at an earlier stage, which can also help identify weaknesses and bad design decisions. It also produces runnable code at an earlier stage in the project process, which can be used to convince external stakeholders, like the customer, that progress is being made. This will also allow this stakeholder to give early input on the design to continously ensure that the correct product is produced.
