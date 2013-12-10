@@ -1,8 +1,10 @@
-
+\section{Software Requirement Specification}
+\label{sec:srs}
 This document contains the requirements for the DragonQuest game. All requirements have a priority associated with them, ranging from $1$ to $5$, where $1$ is the highest and $5$ is the lowest. This implies that if some functionality is inconsistent or for some other reason is not realizable, the priorities reflect which requirements have precedence to be implemented in the software.
 
-\section{External Interface Requirements}
-\subsection{User Interfaces}
+\subsection{External Interface Requirements}
+
+%\subsection{User Interfaces}
 
 \requirement{Chat}
 \reqsection{Description}
@@ -25,13 +27,10 @@ If input character doesn't exist that fact should not affect the rest of the pro
 
 \stoprequirement
 
-\subsection{Hardware Interfaces}
-\subsection{Software Interfaces}
-\subsection{Communications Interfaces}
-\section{Functional Requirements}
-This section describes specific features of the software project.  If desired, some requirements may be specified in the use-case format and listed in the Use Cases Section.
+\subsection{Functional Requirements}
+This section describes specific features of the software project.
 
-\subsection{Game settings}
+%\subsection{Game settings}
 
 \requirement{Multiplayer/Single Player Mode}
 \reqsection{Description}
@@ -81,7 +80,7 @@ If the connection is not successfull the user will be presented with information
 
 \stoprequirement
 
-\subsection{Game board actions}
+%\subsection{Game board actions}
 
 \requirement{Move}
 
@@ -156,7 +155,7 @@ If the client loses its connection to the server the user will get made aware th
 
 \stoprequirement
 
-\subsection{Battling}
+%\subsection{Battling}
 
 \requirement{Battle}
 
@@ -234,7 +233,7 @@ See Requirement \ref{req:connectionlossstall}.
 
 \stoprequirement
 
-\subsection{Connections}
+%\subsection{Connections}
 
 \requirement{Connection loss/stall}
 \label{req:connectionlossstall}
@@ -257,11 +256,13 @@ If the client reconnects within the servers specified turn time the game continu
 
 \stoprequirement
 
-\section{Non-Functional Requirements}
-Non-functional requirements may exist for the following attributes.  Often these requirements must be achieved at a system-wide level rather than at a unit level.  State the requirements in the following sections in measurable terms (e.g., 95\% of transaction shall be processed in less than a second, system downtime may not exceed 1 minute per day, > 30 day MTBF value, etc). 
-\subsection{Performance}
+\subsection{Non-Functional Requirements}
+Non-functional requirements may exist for the following attributes.  Often these requirements must be achieved at a system-wide level rather than at a unit level.  
 
-\subsection{Game experience}
+%\subsection{Performance}
+
+%\subsection{Game experience}
+
 \subsubsection{Competition}
 \label{req:competition}
 The game contains elements that allow for competativeness between players.
@@ -284,7 +285,8 @@ The game should deviate as little as possible from the standard board game, unle
 
 \prio{2}{Business value, as selling the game as a computer game copy of the board game eases marketing.}
 
-\subsection{Reliability}
+%\subsection{Reliability}
+
 \subsubsection{Responsiveness}
 The game should stall as little as possible in order to improve the game experience. The game should also minimize stalls caused by users.
 
@@ -295,7 +297,8 @@ The game shall not respond unexpectedly to erronous user input.
 
 \prio{1}{Critical for game playability.}
 
-\subsection{Availability}
+%\subsection{Availability}
+
 \subsubsection{Learning curve}
 It should be possible to learn the game adequately within 20 minutes of game play. No tutorial should be needed.
 
@@ -306,7 +309,8 @@ The game should include elements of gameplay that allow the user to develop as a
 
 \prio{3}{Increases probability of players keep playing, which gives market opportunities}
 
-\subsection{Security}
+%\subsection{Security}
+
 \subsubsection{Validation}
 \label{cheating}
 The server should validate the client input to make sure they are legal according to the game rules. The client needs to validate server data user input. 
@@ -318,7 +322,8 @@ Any collected informations should be handled in accordance with Personuppgiftsla
 
 \prio{1}{This is required in order to follow Swedish law.}
 
-\subsection{Maintainability}
+%\subsection{Maintainability}
+
 \subsubsection{Maintenance}
 The code should be easy to maintain and extend.
 
@@ -330,7 +335,8 @@ The code base of the project should be as little intertwined as possible with th
 
 \prio{1}{Code re-usability is important, as we expect to develop a multitude of DragonQuest-based games in the future.}
 
-\subsection{Portability}
+%\subsection{Portability}
+
 \subsubsection{Mobile devices}
 The game should support the most common mobile devices, such as the Windows mobile, iOS and Android platforms. It shall be possible to create a lower resolution client, in order to support any phone that fulfills the minimum requirements stated in \ref{hwreq}.
 
@@ -341,10 +347,11 @@ The game should be written in Java, in order to function on any platform support
 
 \prio{2}{Important to make the game available to as many players as possible, increasing the revenue.}
 
-\section{Design Constraints}
+\subsection{Design Constraints}
 Specify design constrains imposed by other standards, company policies, hardware limitation, etc. that will impact this software project.
 
-\subsection{Process}
+%\subsection{Process}
+
 \subsubsection{Iterative development process}
 The game development should follow an iterative design process. Each iteration shall be two weeks long, and a snapshot of the development shall be handed in for review to the customer at the end of each iteration.
 
@@ -357,7 +364,8 @@ The game must be ready for deployement by christmas 2013.
 \prio{2}{Important for business, exploit christmas sales.}
 
 
-\subsection{Product}
+%\subsection{Product}
+
 \subsubsection{Low hardware requirements}
 \label{hwreq}
 The hardware requirements of the game should be kept as low as possible. The game should run on any computer with at least 20mb RAM and 300mhz processor and a graphics card with 3d accelleration. (We're just making this up. It would be possible to have this kind of constraint but we don't know what numbers are reasonable).

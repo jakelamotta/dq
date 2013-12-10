@@ -1,112 +1,102 @@
+\section{Use Cases}
+\label{sec:usecases}
 
-\section*{Use Cases - subdivision TODO}
+%\begin{table}[h!]
+%\label{template}
+%\caption{Use-Case template}
+%\begin{tabular}{|c| p{9cm}|c}
+%\hline
+%Use Case & Number ID to represent your use case \\
+%Application & What system or application does this pertain to \\
+%Name & The name of your use case, keep it short and sweet &  \\
+%Description	& Elaborate more on the name, in paragraph form. \\
+%Primary Actor & Who is the main actor that this use case represents \\
+%Precondition &	What preconditions must be met before this use case can start \\
+%Trigger	& What event triggers this use case \\ \hline
+%Basic Flow	& The basic flow should be the events of the use case when everything is perfect; there are no errors, no exceptions. This is the "happy day scenario". %The exceptions will be handled in the "Alternate Flows" section. & Included in design? \\ \hline
+%Alternate Flows	& The most significant alternatives and exceptions & Included in design? \\
+%\hline
+%\end{tabular}
+%\end{table}
 
-\begin{table}[h!]
-\label{template}
-\caption{Use-Case template}
-\begin{tabular}{|c| p{9cm}|c}
-\hline
-Use Case & Number ID to represent your use case & \\
-Application & What system or application does this pertain to & \\
-Name & The name of your use case, keep it short and sweet &  \\
-Description	& Elaborate more on the name, in paragraph form. & \\
-Primary Actor & Who is the main actor that this use case represents & \\
-Precondition &	What preconditions must be met before this use case can start & \\
-Trigger	& What event triggers this use case & \\ \hline
-Basic Flow	& The basic flow should be the events of the use case when everything is perfect; there are no errors, no exceptions. This is the "happy day scenario". The exceptions will be handled in the "Alternate Flows" section. & Included in design? \\ \hline
-Alternate Flows	& The most significant alternatives and exceptions & Included in design? \\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}
+\subsection{Game connection}
 \label{connection}
-\caption{Game connection}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application	& Client  & \\
-Name & Game connection  & \\
-Description	& The user has launched the game, and will choose between a set of available options (e.g. connect, settings, statistics, exit)  & \\
-Primary Actor & Player & \\
-Precondition &None & \\
-Trigger & Running the game executable, or quitting a current game which is interpreted as a reinitialization comparable to restarting the executable.  & \\ \hline
-Basic Flow & The player presses a connection button, upon which he/she is  requested to specify the IP-number of an active game (server) to connect to.  & NO \\ \hline
-Alternate Flows & The user changes his/her mind and presses the exit button. The user is then asked to verify that he/she really want to end the game before the game is ended.  & NO \\
+Application	& Client  \\
+Name & Game connection  \\
+Description	& The user has launched the game, and will choose between a set of available options (e.g. connect, settings, statistics, exit)  \\
+Primary Actor & Player \\
+Precondition &None \\
+Trigger & Running the game executable, or quitting a current game which is interpreted as a reinitialization comparable to restarting the executable.  \\ \hline
+Basic Flow & The player presses a connection button, upon which he/she is  requested to specify the IP-number of an active game (server) to connect to.  \\ \hline
+Alternate Flows & The user changes his/her mind and presses the exit button. The user is then asked to verify that he/she really want to end the game before the game is ended.  \\
 \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
+\subsection{Choose hero and magic ring}
 \label{choosehero}
-\caption{Choose hero and magic ring}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Choosing the hero and magic ring & \\
-Description & The player chooses a Hero, depending on his turn of action. & \\
-Primary Actor & Multiple players & \\
-Precondition & At least 2 players in an active game. & \\
-Trigger & The game is begun & \\ \hline
-Basic flow & The users roll a die each. The action turns of the players is decided by the outcome of the dice (highest die-first to act=first action turn). The players then choose a Hero from the available sets of heroes in the order of their actions (when a Hero is chosen by a player, that hero is no longer available to other players). When the heroes have been chosen, then players choose a magic ring among the available magic rings in the reverse action turn order. & YES \\ \hline
-Alternate Flows & Several players roll the same die, in this case, those players may roll their die again in order to break the tie. The other players are not affected, and their action turn relative to these players is based on the first roll of the die. (i.e., A rolls 4. B rolls 1. and C rolls 1. C and B roll again, resulting in 6 and 5. The order is now A, C, B and not C, B, A). & NO\\
+Application & Server \\
+Name & Choosing the hero and magic ring \\
+Description & The player chooses a Hero, depending on his turn of action. \\
+Primary Actor & Multiple players \\
+Precondition & At least 2 players in an active game. \\
+Trigger & The game is begun \\ \hline
+Basic flow & The users roll a die each. The action turns of the players is decided by the outcome of the dice (highest die-first to act=first action turn). The players then choose a Hero from the available sets of heroes in the order of their actions (when a Hero is chosen by a player, that hero is no longer available to other players). When the heroes have been chosen, then players choose a magic ring among the available magic rings in the reverse action turn order. \\ \hline
+Alternate Flows & Several players roll the same die, in this case, those players may roll their die again in order to break the tie. The other players are not affected, and their action turn relative to these players is based on the first roll of the die. (i.e., A rolls 4. B rolls 1. and C rolls 1. C and B roll again, resulting in 6 and 5. The order is now A, C, B and not C, B, A). \\
 \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Ambush by an opponent}
+\subsection{Ambush by an opponent}
 \label{ambushopponent}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Ambush (goblin, orc, cave troll, skeleton or two orcs) & \\
-Description & The player is ambushed, and must fight or flee. & \\
-Primary Actor & Two players & \\
-Precondition & None & \\
-Trigger & The player is dealt a a room card specifying an ambush, b draws a coffin card specifying an ambush & \\ \hline
-Basic flow & The player must choose whether wishes to fight, or attempt to escape. If the player chooses to fight, see use case \ref{fightopponent}. If the player attempts to escape, see use case \ref{escape} & NO\\
+Application & Server \\
+Name & Ambush (goblin, orc, cave troll, skeleton or two orcs) \\
+Description & The player is ambushed, and must fight or flee. \\
+Primary Actor & Two players \\
+Precondition & None \\
+Trigger & The player is dealt a a room card specifying an ambush, b draws a coffin card specifying an ambush \\ \hline
+Basic flow & The player must choose whether wishes to fight, or attempt to escape. If the player chooses to fight, see use case \ref{fightopponent}. If the player attempts to escape, see use case \ref{escape} \\
 \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Escaping an opponent}
+\subsection{Escaping an opponent}
 \label{escape}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Flee & \\
-Description & The player tries to flee from an opponent. & \\
-Primary actor & Player whose turn it is & \\
-Secondary actor & Player with previous turn. & \\
-Precondition & none & \\
-Trigger & The player tries to escape an opponent. & \\ \hline
+Application & Server \\
+Name & Flee \\
+Description & The player tries to flee from an opponent. \\
+Primary actor & Player whose turn it is \\
+Secondary actor & Player with previous turn. \\
+Precondition & none \\
+Trigger & The player tries to escape an opponent. \\ \hline
 Basic flow & Both player and opponent draw a power card randomly. If the player's power card has an escape value higher or equal to the monster's escape value, the attempt was successful and the user returns to the room he/she came from. The monster remains in the room. 
 
-If the player's escape value is lower than the escape value of the opponent, the player will take damage equal to the damage value of the monster's power card. The player must then fight the opponent, see \ref{fightopponent}.
-& NO \\
+If the player's escape value is lower than the escape value of the opponent, the player will take damage equal to the damage value of the monster's power card. The player must then fight the opponent, see \ref{fightopponent}.\\
 
 \hline
 \end{tabular}
-\end{table}
 
 
 
-\begin{table}
-\caption{Fighting an opponent}
+\subsection{Fighting an opponent}
 \label{fightopponent}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Fight (goblin, orc, cave troll, skeleton or two orcs) & \\
-Description & The player fights an opponent, represented by another player in the game (or AI). & \\
-Primary actor & Player whose turn it is & \\
-Secondary actor & Player with previous turn. & \\
-Precondition & None & \\
-Trigger & A fight is initiated according to \ref{ambushopponent}. & \\ \hline
+Application & Server \\
+Name & Fight (goblin, orc, cave troll, skeleton or two orcs) \\
+Description & The player fights an opponent, represented by another player in the game (or AI). \\
+Primary actor & Player whose turn it is \\
+Secondary actor & Player with previous turn. \\
+Precondition & None \\
+Trigger & A fight is initiated according to \ref{ambushopponent}. \\ \hline
 Basic flow & During the first round both players draw a random Power card (if the player unsuccessfully tried to flee, the power card used in the attempt can not be chosen) and add it to their hand. Both players draw cards from the combat deck, adding up to a total of five cards on their hands, without showing them to the other player. Note that each player has only one power card in each battle, and this card is to be regarded as a combat card. Each hero and monster have individual power cards.
 
 Each turn in the battle goes as follows:
@@ -127,232 +117,196 @@ If both players have the same attack value and no counterattacks are possible, n
 
 This is repeated, until either the opponent or the player has received damage higher than or equal to the available HP. In this case, the fight ends and game continues.
 
-If the opponent was the winner, the player is out of the game and the monster continues to occupy the room, without taking any damage. If the player was the winner, the monster is dead.
-
-& NO \\
+If the opponent was the winner, the player is out of the game and the monster continues to occupy the room, without taking any damage. If the player was the winner, the monster is dead.\\
 
 
 
 \hline
 \end{tabular}
-\end{table}
 
-\begin{table}
-\caption{Counter-attack}
+\subsection{Counter-attack}
 \label{fight_counterattack}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Counterattack & \\
-Description & A counterattack is made by the player (or AI), during a battle. & \\
-Primary actor & Player whose turn it is & \\
-Secondary actor & Player with previous turn.& \\
-Precondition & Player (monster) has used a combat card with lower value, but has a counterattack chance matching the attack type of the monster (player)& \\
-Trigger & The player (monster) chooses to counterattack  & \\ \hline
-Basic flow & The player is allowed to increase his/her initial attack value, by adding more cards to his attack pile. Only cards with a counterattack symbol matching the opponents attack may be put down. The player may keep adding cards to the attack, until the total sum of the attack values exceeds the attack value of the opponent.& NO\\
+Application & Server \\
+Name & Counterattack \\
+Description & A counterattack is made by the player (or AI), during a battle. \\
+Primary actor & Player whose turn it is \\
+Secondary actor & Player with previous turn.\\
+Precondition & Player (monster) has used a combat card with lower value, but has a counterattack chance matching the attack type of the monster (player)\\
+Trigger & The player (monster) chooses to counterattack  \\ \hline
+Basic flow & The player is allowed to increase his/her initial attack value, by adding more cards to his attack pile. Only cards with a counterattack symbol matching the opponents attack may be put down. The player may keep adding cards to the attack, until the total sum of the attack values exceeds the attack value of the opponent.\\
 \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Death-blow}
+\subsection{Death-blow}
 \label{fight_deathblow}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Death blow & \\
-Description & A death blow adds additional damage to the opponent during battle & \\
-Primary actor & Player whose turn it is & \\
-Secondary actor & Player with previous turn. & \\
-Precondition & The played attack card type matches the attack type of one or more cards in the combat stack, and the card has a higher attack value than the opponent & \\
-Trigger &  & \\ \hline
-Basic flow & The winning player may take all cards of the same type as the played card from the combat stack, and put them in the damage pile of the opponent & NO\\
+Application & Server \\
+Name & Death blow \\
+Description & A death blow adds additional damage to the opponent during battle \\
+Primary actor & Player whose turn it is \\
+Secondary actor & Player with previous turn. \\
+Precondition & The played attack card type matches the attack type of one or more cards in the combat stack, and the card has a higher attack value than the opponent \\
+Trigger &  \\ \hline
+Basic flow & The winning player may take all cards of the same type as the played card from the combat stack, and put them in the damage pile of the opponent \\
 \hline
 \end{tabular}
-\end{table}
 
 % Combat discrepancy: Does a death blow happen before or after the counterattack? If counterattack happens first, the precondition of the death blow is no longer satisfied. We have chosen to regard death blow as a part of the damage assignment, i.e. after the counterattack
 
 
-\begin{table}
-\caption{Power card effects}
+\subsection{Power card effects}
 \label{fight_powercard}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Fight (goblin, orc, cave troll, skeleton or two orcs) & \\
-Description & The player fights an opponent, represented by another player in the game (or AI). & \\
-Primary actor & Player whose turn it is & \\
-Secondary actor & Player with previous turn. & \\
-Precondition & None & \\
-Trigger & A fight is initiated according to \ref{ambushopponent}. & \\ \hline
-Basic flow & The player, and the opponent both choose one of their three attack cards. When both have chosen, these are compared and the winner is determined. The looser takes one damage (the opponent can potentially take two damage). In case of a tie, both player and opponent take one damage. This repeats, until either the opponent or the player is dead. & NO\\ \hline
+Application & Server \\
+Name & Fight (goblin, orc, cave troll, skeleton or two orcs) \\
+Description & The player fights an opponent, represented by another player in the game (or AI). \\
+Primary actor & Player whose turn it is \\
+Secondary actor & Player with previous turn. \\
+Precondition & None \\
+Trigger & A fight is initiated according to \ref{ambushopponent}. \\ \hline
+Basic flow & The player, and the opponent both choose one of their three attack cards. When both have chosen, these are compared and the winner is determined. The looser takes one damage (the opponent can potentially take two damage). In case of a tie, both player and opponent take one damage. This repeats, until either the opponent or the player is dead. \\
 \hline
 \end{tabular}
-\end{table}
-0
 
 
-
-\begin{table}
-\caption{Ambush by a monster}
+\subsection{Ambush by a monster}
 \label{ambushmonster}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application &	Server & \\
-Name & Ambush (Monster, e.g. Great spider)& \\
-Description&  The player is dealt a Room Card with an ambush by a Great Spider, and fights it.& \\
-Primary actor & Active Player& \\
-Precondition &  None.& \\
-Trigger & The player is dealt a Room card/room searching card that has Great Spider ambush on it.& \\ \hline
-Basic flow & The player has to choose three number between 1 and 6. The computer randomizes a number between 1 and 6, and if the generated number matches a number given by the user, the Great Spider dies and the turn is over. & NO \\ \hline
-Alternate flow & If the generated number does not match one of the user given numbers the user is dealt 1 (one) damage point and the spider remains on the users hand until next turn, at which point the use case is restarted. & NO \\
+Application &	Server \\
+Name & Ambush (Monster, e.g. Great spider)\\
+Description&  The player is dealt a Room Card with an ambush by a Great Spider, and fights it.\\
+Primary actor & Active Player\\
+Precondition &  None.\\
+Trigger & The player is dealt a Room card/room searching card that has Great Spider ambush on it.\\ \hline
+Basic flow & The player has to choose three number between 1 and 6. The computer randomizes a number between 1 and 6, and if the generated number matches a number given by the user, the Great Spider dies and the turn is over. \\ \hline
+Alternate flow & If the generated number does not match one of the user given numbers the user is dealt 1 (one) damage point and the spider remains on the users hand until next turn, at which point the use case is restarted. \\
 \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Occupying the dragon's lair}
+\subsection{Occupying the dragon's lair}
 \label{dragonslair}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application &  Server & \\
-Name &  Occupying the dragon's lair & \\
-Description & The player is in the dragons lair and tries to steal gold from the sleeping dragon. & \\
-Primary actor&  Player whose turn it is & \\
-Precondition & None & \\
-Trigger & The user enters, or remains in the dragons lair (treasure chamber). & \\ \hline
-Basic flow & The user is dealt a random amounts of gold, and the computer decides if the dragon wakes up or not. If the dragon is not woken, the turn is over. & \\ \hline
-Alternative flow & If the dragon wakes, all Players in the treasure chamber are evicted into a random adjacent and previously visited room and loose all gold they have gained since entering the treasure chamber. All players are also dealt a random value between 1-12 in damage. The turn is then over. & NO \\
+Application &  Server \\
+Name &  Occupying the dragon's lair \\
+Description & The player is in the dragons lair and tries to steal gold from the sleeping dragon. \\
+Primary actor&  Player whose turn it is \\
+Precondition & None \\
+Trigger & The user enters, or remains in the dragons lair (treasure chamber). \\ \hline
+Basic flow & The user is dealt a random amounts of gold, and the computer decides if the dragon wakes up or not. If the dragon is not woken, the turn is over. \\ \hline
+Alternative flow & If the dragon wakes, all Players in the treasure chamber are evicted into a random adjacent and previously visited room and loose all gold they have gained since entering the treasure chamber. All players are also dealt a random value between 1-12 in damage. The turn is then over. \\
 \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Search a room}
+\subsection{Search a room}
 \label{searchroom}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Search room & \\
-Description &  & \\
-Primary actor & Active player & \\
-Precondition & Active player have searched the room 0 or 1 time before. Room rules allows the room to be searched. Also, the room must have a search icon showing that it can be searched.  & \\
-Trigger & The active player chooses to search the room and draw a room searching card  & \\ \hline
-Basic flow & The player draws a room searching card and finds nothing. The turn is over and number of searches is incremented. & \\ \hline
-Alternative flow & The player draws a card with a hidden door and may or may not go through it. The hidden door may be "placed" in any direction and disappears after the turn. If the player does not go through the door the turn is over. & NO \\\hline
-Alternative flow & A giant spider is drawn, see use case \ref{ambushmonster}. & YES \\ \hline
-Alternative flow & A bottle is found & YES \\ \hline
-Alternative flow & A treasure is found, player receives random amount of treasure. & YES \\
+Application & Server \\
+Name & Search room \\
+Description &  \\
+Primary actor & Active player \\
+Precondition & Active player have searched the room 0 or 1 time before. Room rules allows the room to be searched. Also, the room must have a search icon showing that it can be searched.  \\
+Trigger & The active player chooses to search the room and draw a room searching card  \\ \hline
+Basic flow & The player draws a room searching card and finds nothing. The turn is over and number of searches is incremented. \\ \hline
+Alternative flow & The player draws a card with a hidden door and may or may not go through it. The hidden door may be "placed" in any direction and disappears after the turn. If the player does not go through the door the turn is over. \\\hline
+Alternative flow & A giant spider is drawn, see use case \ref{ambushmonster}. \\ \hline
+Alternative flow & A bottle is found \\ \hline
+Alternative flow & A treasure is found, player receives random amount of treasure. \\
 \hline
 \end{tabular}
-\end{table}
 
-\begin{table}
-\caption{Move to adjacent room}
+\subsection{Move to adjacent room}
 \label{moveoutfromroom}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Move to adjacent room & \\
-Description & The player moves to an adjacent room in the dungeon & \\
-Primary actor & Active player & \\
-Precondition & The room has an adjacent room, possibly through a door or portcullis. Alternatively, a hidden door might have been found according to use case \ref{searchroom}. This may not happen if the player does not have the possibility to move, due to some other effect (possibly due to the type of room). & \\
-Trigger & The player is active and chooses to move to an adjacent room  & \\ \hline
-Basic flow & There is one or more rooms adjacent to the tile the player currently occupies. In this case, the player can choose to move to any such tile, the effects of which is described in \ref{moveintoroom} & \\ \hline
-Alternative flow & The player attempts to leave the room through a door. See use case \ref{opendoor}. & NO \\\hline
-Alternative flow & The player attempts to leave the room through a portcullis. See use case \ref{portcullis}. & YES \\ \hline
-Alternative flow & The player has found a hidden door as explained in \ref{searchroom}. The player can move to any of the six tiles to the left, right, front, back, up and down as long as that square is still within the game board. The effects of this is explained in \ref{moveintoroom} & YES \\ \hline
-Alternative flow & A treasure is found, player receives random amount of treasure. & YES \\
+Application & Server \\
+Name & Move to adjacent room \\
+Description & The player moves to an adjacent room in the dungeon \\
+Primary actor & Active player \\
+Precondition & The room has an adjacent room, possibly through a door or portcullis. Alternatively, a hidden door might have been found according to use case \ref{searchroom}. This may not happen if the player does not have the possibility to move, due to some other effect (possibly due to the type of room). \\
+Trigger & The player is active and chooses to move to an adjacent room  \\ \hline
+Basic flow & There is one or more rooms adjacent to the tile the player currently occupies. In this case, the player can choose to move to any such tile, the effects of which is described in \ref{moveintoroom} \\ \hline
+Alternative flow & The player attempts to leave the room through a door. See use case \ref{opendoor}. \\\hline
+Alternative flow & The player attempts to leave the room through a portcullis. See use case \ref{portcullis}. \\ \hline
+Alternative flow & The player has found a hidden door as explained in \ref{searchroom}. The player can move to any of the six tiles to the left, right, front, back, up and down as long as that square is still within the game board. The effects of this is explained in \ref{moveintoroom} \\ \hline
+Alternative flow & A treasure is found, player receives random amount of treasure. \\
 \hline
 \end{tabular}
-\end{table}
 
-\begin{table}
-\caption{opendoor}
+\subsection{Open door}
 \label{opendoor}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Open door & \\
-Description & The player attempts to open a door & \\
-Primary actor & Active player & \\
-Precondition & There is at least one door in the current room. \ref{searchroom} & \\
-Trigger & Player interaction.  & \\ \hline
+Application & Server \\
+Name & Open door \\
+Description & The player attempts to open a door \\
+Primary actor & Active player \\
+Precondition & There is at least one door in the current room. \ref{searchroom} \\
+Trigger & Player interaction.  \\ \hline
 Basic flow & The player is dealt a door card. If the door card states that the door is opened, the player moves to the tile adjacent to the door, the effects of which is described in use case \ref{moveintoroom}.
 
 If the door card states that the door is jammed, the player must stay in the room but can attempt to repeat the process the next turn if he/she wishes.
 
-If the door card states that the door is trapped, the player is a trap card and must the stay in the room for the round. The player can attempt to repeat the process the next turn if he/she wishes. For the effects of the trap card, see \ref{trap}. & \\ \hline
- \\
-\hline
+If the door card states that the door is trapped, the player is a trap card and must the stay in the room for the round. The player can attempt to repeat the process the next turn if he/she wishes. For the effects of the trap card, see \ref{trap}. \\ \hline
 \end{tabular}
-\end{table}
 
-\begin{table}
-\caption{Portcullis}
+\subsection{Portcullis}
 \label{portcullis}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Open portcullis & \\
-Description & The player attempts to move through an entrance blocked by a portcullis & \\
-Primary actor & Active player & \\
-Precondition & There is a portcullis blocking a path. \ref{searchroom} & \\
-Trigger & Player interaction. & \\ \hline
-Basic flow & The player must make an attribute test based on his/her strength, see use case \ref{attributetest}. If the player succeeds, he/she may move to the room adjacent to the portcullis and face the effects as explained in \ref{moveintoroom}. If the player fails, he/she suffers 1d6 damage (Or what was it exactly? Doesn't matter really...) and must stay in the room until the next round, when he/she is allowed to attempt again or take another action if he/she wishes. & \\ \hline
- \\
-\hline
+Application & Server \\
+Name & Open portcullis \\
+Description & The player attempts to move through an entrance blocked by a portcullis \\
+Primary actor & Active player \\
+Precondition & There is a portcullis blocking a path. \ref{searchroom} \\
+Trigger & Player interaction. \\ \hline
+Basic flow & The player must make an attribute test based on his/her strength, see use case \ref{attributetest}. If the player succeeds, he/she may move to the room adjacent to the portcullis and face the effects as explained in \ref{moveintoroom}. If the player fails, he/she suffers 1d6 damage (Or what was it exactly? Doesn't matter really...) and must stay in the room until the next round, when he/she is allowed to attempt again or take another action if he/she wishes. \\ \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Attribute test}
+\subsection{Attribute test}
 \label{attributetest}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Attribute test & \\
-Description & The player has attempted an action that requires an attribute test to determine if it is successful or not. & \\
-Primary actor & Active player & \\
-Precondition & None & \\
-Trigger & An action requires an attribute test to be made. & \\ \hline
-Basic flow & The player does an attribute test against one of the hero's stats: strength, agility, armor or luck, depending on the attempted action. The player must roll 2d6 and compare the value towards the hero's stat. If the sum of the values of the two dice is lower than the players stat, the player succeeds with the action. If not, the player has failed and must suffer the consequences according to the rules of the specific action. & \\ \hline
- \\
-\hline
+Application & Server \\
+Name & Attribute test \\
+Description & The player has attempted an action that requires an attribute test to determine if it is successful or not. \\
+Primary actor & Active player \\
+Precondition & None \\
+Trigger & An action requires an attribute test to be made. \\ \hline
+Basic flow & The player does an attribute test against one of the hero's stats: strength, agility, armor or luck, depending on the attempted action. The player must roll 2d6 and compare the value towards the hero's stat. If the sum of the values of the two dice is lower than the players stat, the player succeeds with the action. If not, the player has failed and must suffer the consequences according to the rules of the specific action. \\ \hline
 \end{tabular}
-\end{table}
 
-\begin{table}
-\caption{Move into room}
+\subsection{Move into room}
 \label{moveintoroom}
 \begin{tabular}{|c| p{9cm}|c}
 \hline
-Application & Server & \\
-Name & Move into room & \\
-Description & The player has successfully moved into a new room. & \\
-Primary actor & Active player & \\
-Precondition & See \ref{moveoutfromroom}. Also, the room must not be occupied by another player, except for in the treasure chamber. & \\
-Trigger & - & \\ \hline
+Application & Server \\
+Name & Move into room \\
+Description & The player has successfully moved into a new room. \\
+Primary actor & Active player \\
+Precondition & See \ref{moveoutfromroom}. Also, the room must not be occupied by another player, except for in the treasure chamber. \\
+Trigger & - \\ \hline
 Basic flow & If the room has been previously visited by another player, the characteristics of the room will be the same as before. If a trap was sprung in the previous visit, it will be deactivated and no longer affect the player. If the room has not been visited before, a new tile is chosen randomly from the available tiles (excluding treasure chamber). The new tile must be oriented in such a way that a passage, door or portcullis is leading to the room the player has left. This also applies when the player moved through a hidden door.
 
 If the room contains an opponent from a previous opponent, the player must first fight that opponent.
 
 The player will then possibly be dealt a room card, depending on which type of room it is, or suffer other types of consequences, see table \ref{roomeffects}.
 
-If the room contains a coffin or sarcophagus, the player may \emph{choose} to open the sarcophagus, see use case \ref{chests}. If the room contains a corpse or fallen warrior, the player may \emph{choose} to search the corpse/warrior, see use case \ref{corpse}.
-
-& \\ \hline
+If the room contains a coffin or sarcophagus, the player may \emph{choose} to open the sarcophagus, see use case \ref{chests}. If the room contains a corpse or fallen warrior, the player may \emph{choose} to search the corpse/warrior, see use case \ref{corpse}.\\ \hline
 \end{tabular}
-\end{table}
 
 
-\begin{table}
-\caption{Effects of different rooms}
+\subsection{Effects of different rooms}
 \label{roomeffects}
 \begin{tabular}{|c| p{9cm} |}
 \hline
@@ -367,6 +321,5 @@ Tower Room & If you have one or more Loot cards, you may exit the dungeon. If yo
 
 \hline
 \end{tabular}
-\end{table}
 
 \newpage

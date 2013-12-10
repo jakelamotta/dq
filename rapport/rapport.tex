@@ -125,16 +125,25 @@ escapeinside={\#*}{\^^M}
 
 \maketitle
 
-
 \input{intro.tex}
-
-\input{../specifications/Requirements.tex}
-
-\input{../specifications/UseCases.tex}
 
 \input{classdiagram.tex}
 
 \input{dynamics.tex}
 
+% Place all outstanding floats
+\clearpage
+
+\appendix
+
+\input{../specifications/Requirements.tex}
+
+% Place all outstanding floats
+\clearpage
+
+\input{../specifications/UseCases.tex}
+
+% Place all outstanding floats
+\clearpage
 
 \end{document}
