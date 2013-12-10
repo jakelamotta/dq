@@ -18,7 +18,7 @@
 
 \usepackage{alltt}
 \usepackage{listings}
- \usepackage{aeguill}
+\usepackage{aeguill}
 \usepackage{dsfont}
 %\usepackage{algorithm}
 %\usepackage{algorithmicx}
@@ -67,6 +67,8 @@ escapeinside={\#*}{\^^M}
 \usepackage{url}
 \urldef{\mailsa}\path|josh0151@student.uu.se |
 \urldef{\mailsb}\path|bjfo5755@student.uu.se |
+\urldef{\mailsc}\path|svlu5735@student.uu.se |
+\urldef{\mailsd}\path|krjo7211@student.uu.se |
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
@@ -99,14 +101,22 @@ escapeinside={\#*}{\^^M}
 \newcommand{\Tuple}[1]{\langle#1\rangle}
 \newcommand{\Union}{\cup}
 \usetikzlibrary{positioning,shapes,shadows,arrows}
+% SRS commands
+\newcommand{\requirement}[1]{\subsubsection{#1}\begin{tabular}{l p{12.2cm}}}
+
+\newcommand{\reqsection}[1]{\\ \textbf{#1} &}
+
+\newcommand{\stoprequirement}{\end{tabular}}
+
+\newcommand{\prio}[2]{\texttt{Priority:} #1 \emph{Motivation:} #2}
 
 \usepackage{url}
 
 
 
-\title{\textbf{The History, Development and Future of \\ Computer Input/Output Methods}}
+\title{\textbf{DragonQuest report, group 10}}
 
-\author{Bj{\"o}rn Forsberg, Jonathan Sharyari}
+\author{Bj{\"o}rn Forsberg, Jonathan Sharyari, Sven Lundgren, Kristian Johansson}
 \textwidth 5.5in
 \oddsidemargin 0.5in
 
@@ -118,7 +128,13 @@ escapeinside={\#*}{\^^M}
 
 \input{intro.tex}
 
+\input{../specifications/Requirements.tex}
 
+\input{../specifications/UseCases.tex}
+
+\input{classdiagram.tex}
+
+\input{dynamics.tex}
 
 
 \end{document}
